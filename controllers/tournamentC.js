@@ -23,14 +23,19 @@ res.render('tournaments/index.ejs', {
     });}catch(err){res.send(err)}
 })
 
-router.get('/:id', async (req, res)=>{
+router.get('/:id', (req, res)=>{
     // req.params.id is the articles id
-    try{const foundTournament = await Tournament.findOneByID(req.params.id)
-        console.log(foundTournament)
-    res.render('tournaments/show.ejs', {
-        tournament: foundTournament
-        })}catch(err){res.send(err)}
-      })
+    Tournament.findById(req.params.id,(err,foundTournament)=>{
+        if (err){
+            res.send(err)
+        } else {
+            console.log(foundTournament)
+            res.render('tournaments/show.ejs', {
+                tournament: foundTournament
+                })  
+        }
+    })})
+
   
 
 
