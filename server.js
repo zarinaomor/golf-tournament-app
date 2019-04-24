@@ -18,6 +18,7 @@ app.use("/user", userRouter);
 app.use("/tour", tourRouter);
 app.use("/home", homeRouter);
 
+app.use(express.static('css'));
 
 app.listen(3000, err=>{
     console.log(err || "listening on 3000")
