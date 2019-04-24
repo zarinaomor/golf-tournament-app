@@ -4,21 +4,33 @@
 </head>
 <body>
     <h1>Welcome To Your Profile </h1>
-    <nav>
+    <header>
         <ul>
             <li>
                 <a href="/">Back Home</a>
             </li>
         </ul>
-    </nav>
+    </header>
     <main>
         <section>
-            <h2>Registered Tournaments</h2>
+            <h3>Registered Tournaments</h3>
+            <a href="/tour">Click here</a>
         </section>
         <section>
-            <h2>Hosted Tournaments</h2>
+            <h3>Hosted Tournaments</h3>
+            <a href="/tour/host">Click here</a>
         </section>
     </main>
+    <footer>
+        <section>
+            <a href="/tour/<%=tour._id%>/edit">EDIT</a>
+        </section>
+        <section>
+            <form action="/tour/<%=tour._id%>?_method=DELETE" method="POST">
+                <input type="submit" value="Delete Tournament"/>
+            </form>
+        </section>
+    </footer>
 
 
 </body>
