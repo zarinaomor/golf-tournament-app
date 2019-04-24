@@ -7,11 +7,25 @@ router.get('/new', (req,res) => {
         if(err) {
             res.send(err);
         } else {
-            res.render('new.ejs', {
+            res.render('user/new.ejs', {
                 user: allUsers
             });
         }
     });
+})
+
+router.post('/', (req, res) => {
+    User.create(req.body, (err, createdUser) => {
+        res.redirect('/user')
+    })
+})
+
+router.get('/:id', (req, res) => {
+    User.findById(req.params.id, (err, foundUser) => {
+        res.render('user/show.ejs', {
+            user: foundUser
+        })
+    })
 })
 
 module.exports = router;
