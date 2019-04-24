@@ -3,8 +3,8 @@
 {
     text-align: center;
     height: 80px;
-    background: linear-gradient(left, #0072ff, #8811c5);
-    color: #fff;
+    background-image: -webkit-linear-gradient(left, #0072ff, #8811c5);
+    color:white;
     font-weight: bold;
     line-height: 80px;
 }

@@ -13,12 +13,12 @@ const homeRouter = require('./controllers/homeC')
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
+app.use(express.static('public'));
 
 app.use("/user", userRouter);
 app.use("/tour", tourRouter);
 app.use("/home", homeRouter);
 
-app.use(express.static('css'));
 
 app.listen(3000, err=>{
     console.log(err || "listening on 3000")
