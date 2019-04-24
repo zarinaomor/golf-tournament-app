@@ -9,6 +9,7 @@ const methodOverride = require('method-override');
 const userRouter = require('./controllers/userC');
 const tourRouter = require('./controllers/tournamentC');
 const homeRouter = require('./controllers/homeC')
+const authRouter = require('./controllers/authC')
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
@@ -18,6 +19,7 @@ app.use(express.static('public'));
 app.use("/user", userRouter);
 app.use("/tour", tourRouter);
 app.use("/home", homeRouter);
+app.use("/auth", authRouter);
 
 
 app.listen(3000, err=>{
