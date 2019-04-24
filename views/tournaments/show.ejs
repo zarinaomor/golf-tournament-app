@@ -15,7 +15,13 @@
       <h2><%=tournament.DateOfEvent%></h2>
       <h2><%=tournament.fieldSize%></h2>
       <nav>
+
         <ul>
+        <li>
+            <form action="/tour/<%=tournament._id%>?_method=PUT" method="post">
+            <input type="submit" value="Sign Up"/>
+            </form>
+          </li>
           <li>
             <a href="/tour">Tournaments</a>
           </li>
