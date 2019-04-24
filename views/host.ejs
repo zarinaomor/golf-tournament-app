@@ -7,21 +7,14 @@
   <body>
     <header>
       <h1>Create an Event</h1>
-      <nav>
-        <ul>
-          <li>
-            <a href="/">Home</a>
-          </li>
-        </ul>
-      </nav>
     </header>
     <main>
-      <form action="/articles" method="post">
-        <input type="text" name="eventName" /><br/>
-        <input type="text" name="location" /><br/>
-        <input type="text" name="dateOfEvent" /><br/>
-        <input type="text" name="fieldSize" /><br/>
-        <input type="submit" value="Submit"/>
+      <form action="/events" method="post">
+        <input type="text" name="eventName" value="Event Name"/><br/>
+        <input type="text" name="location" value="Location" /><br/>
+        <input type="text" name="dateOfEvent" value="Date"/><br/>
+        <input type="text" name="fieldSize" value = "Field Size"/><br/>
+        <input type="submit" value="Submit for Approval"/>
       </form>
     </main>
   </body>
