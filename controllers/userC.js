@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
 
-
 router.get('/new', (req,res) => {
     User.find({}, (err, allUsers) => {
         if(err) {
@@ -14,9 +13,5 @@ router.get('/new', (req,res) => {
         }
     });
 })
-
-
-
-
 
 module.exports = router;
