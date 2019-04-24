@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <header>
+      <h1>Tournaments</h1>
+
+    </header>
+    <main>
+      <h2>List of Tournaments</h2>
+      <ul>
+        <% for(let i = 0; i < tournaments.length; i++){ %>
+          <li>
+            <a href="/tour/<%=tournaments[i]._id%>"><%=tournaments[i].eventName%></a>
+          </li>
+            <li>
+            <%=tournaments[i].location%>
+          </li>
+            <li>
+            <%=tournaments[i].DateOfEvent%>
+          </li>
+            <li>
+            <%=tournaments[i].fieldSize%>
+          </li>
+          <br/>
+        <% } %>
+      </ul>
+    </main>
+  </body>
+</html>
