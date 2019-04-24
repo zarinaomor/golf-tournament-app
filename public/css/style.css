@@ -29,4 +29,9 @@
     background: #0062cc;
     color: #fff;
 }
+*{
+    background: lightgreen;
+    background-color: lightgreen
+}
+
 /* new.ejs */
