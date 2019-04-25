@@ -25,7 +25,10 @@ router.post('/', (req, res) => {
 })
 
 router.get('/:id', (req, res) => {
-    User.findById(req.params.id, (err, foundUser) => {
+    User.findById(req.params.id)
+    .populate('tournament')
+    .exec((err, foundUser) => {
+        console.log(foundUser);
         res.render('user/show.ejs', {
             user: foundUser
         })
