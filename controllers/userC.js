@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
-const Tour = require('../models/tour');
+const Tour = require('../models/tournament');
 
 router.get('/new', (req,res) => {
     User.find({}, (err, allUsers) => {
