@@ -17,7 +17,7 @@
 }
 .form-control{
     border-radius:1.5rem;
-    margin-left: 230px;
+    /* margin-left: 230px; */
 }
 
 .btnSubmit
@@ -29,7 +29,7 @@
     cursor: pointer;
     background: #0062cc;
     color: #fff;
-    margin-left: 360px;
+    /* margin-left: 360px; */
 
 }
 /* new.ejs */

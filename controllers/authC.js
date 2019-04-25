@@ -7,11 +7,10 @@ router.get('/login', (req,res)=>{
 })
 
 router.post('/register', async (req, res) => {
-    try {
-      const createdUser = await User.create(req.body);
-      console.log(createdUser)
-
-      res.redirect(`/user/${createdUser._id}`);
+  try {
+    const createdUser = await User.create(req.body);
+    console.log(createdUser)
+    res.redirect(`/user/${createdUser._id}`);
   
     } catch(err){
       res.send(err)
