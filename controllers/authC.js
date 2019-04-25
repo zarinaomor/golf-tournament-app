@@ -1,18 +1,26 @@
 const express = require('express');
 const router = express.Router();
-const User = require("../models/user");
+const User = require('../models/user');
 
-router.get("/", async(req, res)=>{
-    try{
-        res.render('home.ejs')
-    } catch(err){
-        res.send(err)
-    }
+router.get('/', (req,res)=>{
+    res.render('login.ejs')
 })
 
-router.post('/', async (req, res) => {
+router.post('/register', async (req, res) => {
     try {
-      const foundUser = await User.findOne({'email': req.body.email});
+      const createdUser = await User.create(req.body);
+      console.log(createdUser)
+
+      res.redirect('/home');
+  
+    } catch(err){
+      res.send(err)
+    }
+  });
+
+  router.post('/login', async (req, res) => {
+    try {
+      const foundUser = await User.findOne({'username': req.body.username});
   
       if(foundUser){
         if(foundUser.validPassword(req.body.password)){
@@ -23,7 +31,7 @@ router.post('/', async (req, res) => {
           res.redirect('/home');
   
         } else {
-          req.session.message = "email or password is incorrect";
+          req.session.message = "Username or password is incorrect";
           res.redirect('/auth/login');
         }
   
@@ -36,4 +44,4 @@ router.post('/', async (req, res) => {
       res.send(err);
     }})
 
-module.exports = router;
+module.exports=router;

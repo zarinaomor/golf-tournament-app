@@ -33,6 +33,12 @@
 
 }
 /* new.ejs */
+*{
+    background: lightgreen;
+    background-color: lightgreen
+}
+
+/* new.ejs */
 
 /* user show.ejs */
 body {
@@ -58,3 +64,4 @@ body {
 }
 
 /* user show.ejs */
+
