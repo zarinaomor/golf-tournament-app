@@ -17,12 +17,20 @@
     </header>
     <main>
         <section class="left-side">
-                <h3>Registered Tournaments</h3>
-            
+                <h3><a href="/tour/">Registered Tournaments</a></h3>
+                <ul>
+                    <% for (let i = 0; i < user.signedUp.length; i++) {%>
+                        <li><a href="/tour/<%=user.signedUp[i]._id%>"><%=user.signedUp[i].eventName%></a></li>
+                    <% } %>
+                </ul>
         </section>
-        <section class="right-side">
-            <h3>Hosted Tournaments</h3>
-            <a href="/tournament/">Click here</a>
+        <section class="left-side">
+                <h3><a href="/tour/">Hosted Tournaments</a></h3>
+                <ul>
+                    <% for (let i = 0; i < user.Hosted.length; i++) {%>
+                        <li><a href="/tour/<%=user.Hosted[i]._id%>"><%=user.Hosted[i].eventName%></a></li>
+                    <% } %>
+                </ul>
         </section>
     </main>
     <footer>
