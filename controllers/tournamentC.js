@@ -10,7 +10,7 @@ router.get('/host', (req, res)=>{
 
 router.post('/', async (req, res)=>{
     try {const createdTournament = await Tournament.create(req.body)
-        res.redirect('/tour')
+        res.redirect('/tournaments')
         }
         catch(err){res.send(err)}})
 //This doesn't have it where it also adds this to 'tournaments hosted' in the user DB but I'll do that after we get authentication and the session stuff lined up
