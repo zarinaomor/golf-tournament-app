@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
 
-router.get('/', (req,res)=>{
+router.get('/login', (req,res)=>{
     res.render('login.ejs')
 })
 
@@ -11,7 +11,7 @@ router.post('/register', async (req, res) => {
       const createdUser = await User.create(req.body);
       console.log(createdUser)
 
-      res.redirect('/home');
+      res.redirect(`/user/${createdUser._id}`);
   
     } catch(err){
       res.send(err)
@@ -20,11 +20,13 @@ router.post('/register', async (req, res) => {
 
   router.post('/login', async (req, res) => {
     try {
-      const foundUser = await User.findOne({'username': req.body.username});
-  
+      const foundUser = await User.findOne({'email': req.body.email});
+      console.log(foundUser)
       if(foundUser){
+        console.log(foundUser.validPassword(req.body.password))
         if(foundUser.validPassword(req.body.password)){
-          res.session.message = '';
+          console.log("valid password")
+          req.session.message = '';
           req.session.logged = true;
           req.session.usersDbId = foundUser._id;
           console.log(req.session, ' successful in login')
@@ -36,7 +38,7 @@ router.post('/register', async (req, res) => {
         }
   
       } else { 
-        res.redirect('/auth');
+        res.redirect('/auth/login');
       }
   
   

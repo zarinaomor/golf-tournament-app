@@ -13,10 +13,10 @@ router.get("/", async(req, res)=>{
 router.post('/', async (req, res) => {
     try {
       const foundUser = await User.findOne({'email': req.body.email});
-  
+      console.log(foundUser)
       if(foundUser){
         if(foundUser.validPassword(req.body.password)){
-          res.session.message = '';
+          req.session.message = '';
           req.session.logged = true;
           req.session.usersDbId = foundUser._id;
           console.log(req.session, ' successful in login')
@@ -28,12 +28,22 @@ router.post('/', async (req, res) => {
         }
   
       } else { 
-        res.redirect('/auth');
+        res.redirect('/auth/login');
       }
   
   
     } catch(err){
       res.send(err);
     }})
+
+router.get("/", (req, res)=>{
+  req.session.destroy((err)=>{
+    if(err){
+      res.send(err)
+    } else {
+      res.redirect("/home")
+    }
+  })
+})
 
 module.exports = router;
