@@ -9,15 +9,24 @@ router.get('/host', (req, res)=>{
     res.render('tournaments/host.ejs')
   });
 
+
+  router.put('/:id', async (req, res)=>{
+   const foundTour = await Tournament.findById(req.params.id);
+   const foundUser = await User.findById(req.session.usersDbId)
+   foundTour.players.push(foundUser._id)
+   console.log(foundUser)
+   console.log(foundTour)
+   res.redirect('/tour')
+})
+
 router.post('/', async (req, res)=>{
     try {
         const createdTournament = await Tournament.create(req.body)
         const foundUser = await User.findById(req.session.usersDbId)
         foundUser.Hosted.push(createdTournament._id)
-        console.log(foundUser)
         foundUser.save()
         createdTournament.host.push(foundUser._id)
-        console.log(createdTournament)
+  
         createdTournament.save()
         res.redirect('/tour')
         }
