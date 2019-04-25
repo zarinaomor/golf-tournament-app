@@ -14,13 +14,22 @@
             <div id="home-center">
                 <h4>Golf to support a cause / have some fun / improve your game</h4>
                 <form action="/user/new">
-                    <button type="submit">Get Started</button>
+                    <button id="home-start" type="submit">Get Started</button>
                 </form>
                 <div id="home-links">
                     <a href="/tour">Tournaments</a>
                     <a href="/tour/host">Host a Tournament</a>
                 </div>
             </div>
+            <% if(session === true){ %>
+            <div id="hello-user">
+                <h4>Hi <%= user.firstName %></h4>
+                <a href="/user/<%=user._id%>">Profile</a>
+                <form action="/home/logout" method="POST">
+                    <button id="home-logout" type="submit">Logout</button>
+                </form>
+            </div>
+            <% } else { %>
             <div id="home-login">
                 <h6>(login icon)</h6>
                 <form action="/home" method="POST">
@@ -29,6 +38,7 @@
                     <button type="submit">Login</button><br/>
                 </form>
                 <a href="/user/new">Sign Up</a>
+            <% } %>
             </div>    
         </div>
         <footer>

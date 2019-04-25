@@ -4,7 +4,11 @@ const User = require("../models/user");
 
 router.get("/", async(req, res)=>{
     try{
-        res.render('home.ejs')
+      const currentUser = await User.findById(req.session.usersDbId)   
+      res.render('home.ejs', {
+        user: currentUser,
+        session: req.session.logged
+        })
     } catch(err){
         res.send(err)
     }
@@ -20,7 +24,7 @@ router.post('/', async (req, res) => {
           req.session.logged = true;
           req.session.usersDbId = foundUser._id;
           console.log(req.session, ' successful in login')
-          res.redirect('/home');
+          res.redirect(`/user/${foundUser._id}`);
   
         } else {
           req.session.message = "email or password is incorrect";
@@ -36,7 +40,8 @@ router.post('/', async (req, res) => {
       res.send(err);
     }})
 
-router.get("/", (req, res)=>{
+router.post("/logout", (req, res)=>{
+  // res.send("logged out")
   req.session.destroy((err)=>{
     if(err){
       res.send(err)
