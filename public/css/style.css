@@ -17,6 +17,7 @@
 }
 .form-control{
     border-radius:1.5rem;
+    margin-left: 230px;
 }
 
 .btnSubmit
@@ -28,10 +29,39 @@
     cursor: pointer;
     background: #0062cc;
     color: #fff;
+    margin-left: 360px;
+
 }
+/* new.ejs */
 *{
     background: lightgreen;
     background-color: lightgreen
 }
 
 /* new.ejs */
+
+/* user show.ejs */
+body {
+    font-family: 'Courgette', cursive;
+}
+.title {
+    color: #007bff;
+    text-align: center; 
+    font-weight: 700;
+    
+} 
+.home-btn {
+    text-align: center;
+    
+}
+
+.left-side {
+    display: inline-block;
+}
+
+.right-side {
+    display: inline-block;
+}
+
+/* user show.ejs */
+
