@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const session = require("express-session");
 
 require("./db/db");
 
@@ -15,6 +16,12 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
 app.use(express.static('public'));
+
+app.use(session({
+    secret: "random string to protect login info",
+    resave: false,
+    saveUninitialized: false,
+}))
 
 app.use("/user", userRouter);
 app.use("/tour", tourRouter);

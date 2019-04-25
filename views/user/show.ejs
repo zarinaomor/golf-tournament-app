@@ -1,24 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-    <h1>Welcome To Your Profile </h1>
-    <nav>
-        <ul>
-            <li>
-                <a href="/">Back Home</a>
-            </li>
-        </ul>
-    </nav>
+    <header>
+        <h1 class="title">Welcome To Your Profile <%=user.firstName%>! </h1>
+        <div class="home-btn">
+            <button type="button" class="btn btn-primary btn-lg"> <a href="/home" style="color: white">Home</a></button>
+        </div>
+        <div>
+
+        </div>
+    </header>
     <main>
-        <section>
-            <h2>Registered Tournaments</h2>
+        <section class="left-side">
+            <h3>Registered Tournaments</h3>
+            <ul>
+            <% for (let i = 0; i < tournaments.length; i++) {%>
+                <li><a href="/tour/<%=tours.eventName[i]._id%>"></a></li>
+            <%}%>
+        </ul>
         </section>
-        <section>
-            <h2>Hosted Tournaments</h2>
+        <section class="right-side">
+            <h3>Hosted Tournaments</h3>
+            <a href="/tour/host">Click here</a>
         </section>
     </main>
+    <footer>
+        <section>
+                <a href="/user/<%=user._id%>/edit">Edit</a>
+        </section>
+        <section>
+            <form action="/user/<%=user._id%>?_method=DELETE" method="POST">
+                <input type="submit" value="Delete"/>
+            </form>
+        </section>
+    </footer>
 
 
 </body>
