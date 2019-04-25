@@ -15,13 +15,31 @@ router.get('/new', (req,res) => {
         });
     })
 1
-router.post('/', (req, res) => {
-    console.log(req.body)
-    User.create(req.body, (err, createdUser) => {
-        console.log(err)
-        console.log(createdUser)
-        res.redirect(`/user/${createdUser._id}`)
-    })
+router.post('/', async (req, res) => {
+    try {
+        const foundUser = await User.findOne({'email': req.body.email});
+        console.log(foundUser)
+        if(foundUser) {
+            console.log(foundUser.validPassword(req.body.password))
+            if(foundUser.validPassword(req.body.password)) {
+                console.log("valid password")
+                req.session.message = '';
+                req.session.logged = true;
+                req.session.userDbId = foundUser._id;
+                console.log(req.session, ' successful in login')
+                res.redirect('/home');
+
+            } else {
+                req.session.message = "Username or password is incorrect";
+                res.redirect('/auth/login');
+            }
+        } else {
+            res.redirect('/auth/login');
+        }
+
+    } catch(err){
+        res.send(err);
+    }
 })
 
 router.get('/:id', (req, res) => {
@@ -34,5 +52,25 @@ router.get('/:id', (req, res) => {
         })
     })
 })
+
+
+router.delete('/:id', (req, res)=> {
+    User.findByIdAndRemove(req.params.id, (err, deletedUser) => {
+      if(err){
+        res.send(err);
+      } else {
+        console.log(deletedUser);
+        Tour.deleteMany({
+          _id: {
+            $in: deletedUser.signedUp
+          }
+        }, (err, data) => {
+          console.log(data)
+          res.redirect('/user');
+        })
+      }
+    })
+  })
+  
 
 module.exports = router;
