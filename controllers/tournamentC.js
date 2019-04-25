@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Tournament = require('../models/tournament');
+const User = require('../models/user');
 
 router.get('/host', (req, res)=>{
     // Here we are finding all the authros
