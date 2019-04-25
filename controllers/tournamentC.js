@@ -46,13 +46,14 @@ router.get('/:id', (req, res)=>{
     Tournament.findById(req.params.id,(err,foundTournament)=>{
         if (err){
             res.send(err)
-        } else {
+        } else {       
             console.log(foundTournament)
-            res.render('tournaments/show.ejs', {
+            res.render('tournaments/show.ejs', {    
                 tournament: foundTournament
                 })  
         }
-    })})
+    })
+})
 
   
 
