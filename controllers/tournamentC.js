@@ -43,16 +43,15 @@ res.render('tournaments/index.ejs', {
 
 router.get('/:id', (req, res)=>{
     // req.params.id is the articles id
-    Tournament.findById(req.params.id,(err,foundTournament)=>{
-        if (err){
-            res.send(err)
-        } else {
+    Tournament.findById(req.params.id)
+        .populate('host').exec((err,foundTournament)=>{
             console.log(foundTournament)
-            res.render('tournaments/show.ejs', {
-                tournament: foundTournament
-                })  
-        }
-    })})
+            res.render('tournaments/show.ejs', {    
+                tournament: foundTournament,
+                name: foundTournament.host[0].firstName,
+                last: foundTournament.host[0].lastName
+                })}  
+)})
 
   
 

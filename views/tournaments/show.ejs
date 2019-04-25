@@ -10,11 +10,13 @@
   </head>
   <body>
     <header>
+    <a href="/home">Home</a>
       <h1><%=tournament.eventName%></h1>
       <h2><%=tournament.location%></h2>
       <h2><%=tournament.DateOfEvent%></h2>
       <h2><%=tournament.fieldSize%></h2>
-      <h2><%=tournament.host%></h2>
+      <h2><a href="/user/<&=tournament.host[0]._id%>">Host: <%=name%> <%=last%></a></h2>
+
       <nav>
 
         <ul>

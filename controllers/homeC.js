@@ -20,7 +20,7 @@ router.post('/', async (req, res) => {
           req.session.logged = true;
           req.session.usersDbId = foundUser._id;
           console.log(req.session, ' successful in login')
-          res.redirect('/home');
+          res.redirect(`/user/${foundUser._id}`);
   
         } else {
           req.session.message = "email or password is incorrect";
