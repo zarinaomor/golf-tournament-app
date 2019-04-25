@@ -4,26 +4,35 @@
         <title></title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="css/style.css" rel="stylesheet">
+        <link href="css/home.css" rel="stylesheet">
     </head>
-    <body>
-        <header>
-            <h1>Tourney</h1>
-            <h4>Golf to support a cause / have some fun / improve your game</h4>
-        </header>
-        <main>
-            <a href="/user/new">Get Started</a>
-            <a href="/tour">Tournaments</a>
-            <a href="/tour/host">Host a Tournament</a>
-        </main>
-        <aside>
-        <h6>(login icon)</h6>
-        <form action="/home" method="POST">
-        <input type="text" name="email" placeholder="email">
-        <input type="password" name="password" placeholder="password">
-        <button type="submit">Login</button><br/>
-        <a href="/user/new">Sign Up</a>
-        </form>
-        </aside>
+    <body class="home-body">
+        <div id="home-main">
+            <div id="home-one">
+                <h1>Tourney</h1>
+            </div>
+            <div id="home-center">
+                <h4>Golf to support a cause / have some fun / improve your game</h4>
+                <form action="/user/new">
+                    <button type="submit">Get Started</button>
+                </form>
+                <div id="home-links">
+                    <a href="/tour">Tournaments</a>
+                    <a href="/tour/host">Host a Tournament</a>
+                </div>
+            </div>
+            <div id="home-login">
+                <h6>(login icon)</h6>
+                <form action="/home" method="POST">
+                    <input type="text" name="email" placeholder="email">
+                    <input type="password" name="password" placeholder="password">
+                    <button type="submit">Login</button><br/>
+                </form>
+                <a href="/user/new">Sign Up</a>
+            </div>    
+        </div>
+        <footer>
+        footer
+        </footer>
     </body>
 </html> 
