@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Tournament = require('../models/tournament');
+const User = require('../models/user');
 
 router.get('/host', (req, res)=>{
     // Here we are finding all the authros
@@ -9,7 +10,15 @@ router.get('/host', (req, res)=>{
   });
 
 router.post('/', async (req, res)=>{
-    try {const createdTournament = await Tournament.create(req.body)
+    try {
+        const createdTournament = await Tournament.create(req.body)
+        const foundUser = await User.findById(req.session.usersDbId)
+        foundUser.Hosted.push(createdTournament._id)
+        console.log(foundUser)
+        foundUser.save()
+        createdTournament.host.push(foundUser._id)
+        console.log(createdTournament)
+        createdTournament.save()
         res.redirect('/tour')
         }
         catch(err){res.send(err)}})
