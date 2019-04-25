@@ -55,7 +55,7 @@ router.get('/:id', (req, res) => {
 
 
 router.delete('/:id', (req, res)=> {
-    User.findByIdAndRemove(req.params.id, (err, deletedUser) => {
+    User.findById(req.params.id, (err, deletedUser) => {
       if(err){
         res.send(err);
       } else {
@@ -66,7 +66,7 @@ router.delete('/:id', (req, res)=> {
           }
         }, (err, data) => {
           console.log(data)
-          res.redirect('/user');
+          res.redirect(`/home`);
         })
       }
     })
