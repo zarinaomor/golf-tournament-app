@@ -8,6 +8,7 @@ const tournamentSchema = new mongoose.Schema({
     fieldSize: Number,
     category: String,
     description: String,
+    imageUrl: String,
     players: [{
         type: mongoose.Schema.Types.ObjectId, ref: 'User'
     }],

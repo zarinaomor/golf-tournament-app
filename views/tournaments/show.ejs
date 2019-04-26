@@ -1,42 +1,49 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="/css/reed.css">
+<html lang="en">
+<head>
     <link rel="stylesheet" type="text/css" href="/css/style.css">
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <title></title>
-  </head>
-  <body>
-    <header>
-    <a href="/home">Home</a>
-      <h1><%=tournament.eventName%></h1>
-      <h2><%=tournament.location%></h2>
-      <h2><%=tournament.DateOfEvent.getMonth()%>/<%=tournament.DateOfEvent.getDate()%></h2>
-      <h2>ParTee Size: <%=tournament.fieldSize%></h2>
-      <h2><a href="/tour/cat/<%=tournament.category%>"><%=tournament.category%></a></h2>
-      <h2><a href="/user/<%=tournament.host[0]._id%>">Host: <%=name%> <%=last%></a></h2>
-
-      <nav>
-
-        <ul>
-        <li>
-            <form action="/tour/<%=tournament._id%>?_method=PUT" method="post">
-            <input class="btn btn-success" type="submit" value="Sign Up"/>
-            </form>
-          </li>
-          <li>
-            <a href="/tour">Tournaments</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
-    <main>
-      <section>
-          <a href="/tour/<%=tournament._id%>/edit">Edit</a>
-      </section>
-    </main>
-  </body>
+    <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="title"><%=tournament.eventName%> </h1>
+            <div class="home-btn">
+                <button type="button" class="btn btn-primary btn-lg"> <a href="/home" style="color: white">Home</a></button>
+            </div>
+        </header>
+        <main>
+            <section class="left-side">
+                <h3>Details</h3>
+                <ul>
+                    <li>
+                        Location: <%=tournament.location%>
+                    </li>
+                    <li>
+                        Date: <%=tournament.DateOfEvent.getMonth()%>/<%=tournament.DateOfEvent.getDate()%>
+                    </li>
+                    <li>
+                        Field Size: <%=tournament.fieldSize%>
+                    </li>
+                    <li>
+                         Category: <a href="/tour/cat/<%=tournament.category%>"><%=tournament.category%></a>
+                    </li>
+                </ul>
+            </section>
+            <aside>
+            <img class="image" src="https://www.atlantisbahamas.com/media/Things%20To%20Do/Activities/Golf/Hero/Golf%20course%20HERO_updated.jpg">
+            </aside>
+            <section class="right-side">
+                <h3>Description</h3>
+                <ul>
+                    <li>Host: <a href="/user/<%=tournament.host[0]._id%>"><%=name%> <%=last%></a></li>
+                    <li><%=tournament.description%></li>
+                </ul>
+            </section>
+        </main>
+        <footer>   
+        </footer>
+    </div>
+</body>
 </html>
