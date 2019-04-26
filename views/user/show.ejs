@@ -22,7 +22,10 @@
                     <% } %>
                 </ul>
             </section>
-            <section class="left-side">
+            <aside>
+            <img class="image" src="https://www.atlantisbahamas.com/media/Things%20To%20Do/Activities/Golf/Hero/Golf%20course%20HERO_updated.jpg">
+            </aside>
+            <section class="right-side">
                 <h3>Hosted Tournaments</h3>
                 <ul>
                     <% for (let i = 0; i < user.Hosted.length; i++) {%>
@@ -32,14 +35,14 @@
             </section>
         </main>
         <footer>
-            <section>
-                <a href="/user/<%=user._id%>/edit">Edit</a>
-            </section>
-            <section>
+            <div class="edit-btn">
+                <button type="button" class="btn btn-primary btn-lg"><a href="/user/<%=user._id%>/edit" style="color: white;">Edit</a></button>
+            </div>
+            <div class="delete-btn">
                 <form action="/user/<%=user._id%>?_method=DELETE" method="POST">
-                    <input type="submit" value="Delete"/>
+                    <button type="button" class="btn btn-primary btn-lg" style="color: white">Delete</a></button>
                 </form>
-            </section>
+            </div>    
         </footer>
     </div>
 </body>

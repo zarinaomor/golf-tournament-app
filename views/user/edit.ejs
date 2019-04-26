@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+</head>
+<body>
+    <header>
+            <h1>Edit <%=user.firstName%>'s Account</h1>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="/home">Home</a>
+                    </li>
+                </ul>
+            </nav>
+    </header>
+    <main>
+        <form action="/user/<%=user._id%>?_method=PUT" method="POST">
+            <input type="text" name="lastName" value="<%-user.lastName%>"><br/>
+            <input type="text" name="firstName" value="<%-user.firstName%>"><br/>
+            <input type="text" name="email" value="<%-user.email%>"><br/>
+            <input type="submit" value="Save Changes"/>
+        </form>
+    
+    </main>
+    
+
+
+
+</body>
+</html>

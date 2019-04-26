@@ -3,7 +3,6 @@ const router = express.Router();
 const User = require('../models/user');
 const Tour = require('../models/tournament');
 
-
 router.get('/new', (req,res) => {
     User.find({}, (err, allUsers) => {
             if(err) {
@@ -39,6 +38,9 @@ router.get('/:id', (req, res) => {
         })
     })
 })
+
+
+
   
 router.delete("/:id", async(req, res)=>{
     try{
@@ -61,5 +63,23 @@ router.delete("/:id", async(req, res)=>{
         res.send(err)
     }
 })
+
+router.get('/:id/edit', (req, res) => {
+    User.findById(req.params.id, (err, foundUser) => {
+        res.render('user/edit.ejs', {
+            user: foundUser
+        })
+    })
+})
+
+router.put('/:id', (req, res) => {
+    User.findByIdAndUpdate(req.params.id, req.body, (err, updatedUser) => {
+        res.redirect(`/user/${req.params.id}`);
+    });
+});
+
+
+
+
 
 module.exports = router;
