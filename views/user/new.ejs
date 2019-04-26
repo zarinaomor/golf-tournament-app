@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+        <div class="container register-form">
+                <div class="form">
+                    <div class="note">
+                        <p>Please Register here</p>
+                    </div>
+
+                    <form class="form-content" action="/user/<%=user._id%>" method="POST">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="lastName" placeholder="Last Name *" value=""/>
+                                </div>
+                                <div class="form-group">
+                                        <input type="text" class="form-control" name="firstName" placeholder="First Name *" value=""/>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="email" placeholder="Email *" value=""/>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="password" name="password" class="form-control" placeholder="Your Password *" value=""/>
+                                </div>
+
+                            </div>
+                        </div>
+                        <button type="submit" class="btnSubmit">Submit</button>
+
+                    </form>
+                </div>
+        </div> 
+
+</body>
+</html>
