@@ -7,6 +7,8 @@ const tournamentSchema = new mongoose.Schema({
     DateOfEvent: {type: Date, required: true},
     fieldSize: Number,
     category: String,
+    description: String,
+    imageUrl: String,
     players: [{
         type: mongoose.Schema.Types.ObjectId, ref: 'User'
     }],

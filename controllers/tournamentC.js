@@ -27,7 +27,6 @@ router.get('/host', (req, res)=>{
 router.post('/', async (req, res)=>{
     try {
         const createdTournament = await Tournament.create(req.body)
-        console.log(createdTournament)
         const foundUser = await User.findById(req.session.usersDbId)
         foundUser.Hosted.push(createdTournament._id)
         foundUser.save()
@@ -61,7 +60,6 @@ router.get('/:id', (req, res)=>{
     // req.params.id is the articles id
     Tournament.findById(req.params.id)
         .populate('host').exec((err,foundTournament)=>{
-            console.log(foundTournament)
             res.render('tournaments/show.ejs', {    
                 tournament: foundTournament,
                 name: foundTournament.host[0].firstName,

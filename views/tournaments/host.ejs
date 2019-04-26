@@ -1,35 +1,54 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="/css/reed.css">
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
+<html lang="en">
+<head>
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <title></title>
-  </head>
-  <body>
-    <header>
-      <h1>Create a ParTee</h1>
-      <a href="/home">Home</a>
-    </header>
-    <main>
-      <form action="/tour" method="post">
-        <input type="text" name="eventName" placeholder="Event Name"/><br/>
-        <input type="text" name="location" placeholder="Location" /><br/>
-        <input type="date" name="DateOfEvent" value="Date"/><br/>
-        <input type="number" name="fieldSize" placeholder= "Field Size"/><br/>
-        <select name="category">
-          <option>Category</option>
-          <option name= "category" value="Tech">Tech</option>
-          <option name= "category" value="Finance">Finance</option>
-          <option name= "category" value="Law">Law</option>
-          <option name= "category" value="Politics">Politics/Government</option>
-          <option name= "category" value="Social">Social</option>
-        </select><br/>
-        <input class="btn btn-success" type="submit" value="Submit ParTee"/>
-      </form>
-    </main>
-  </body>
+</head>
+<body>
+        <div class="container register-form">
+                <div class="form">
+                    <div class="note">
+                        <p>Host a ParTee</p>
+                    </div>
+                  
+                    <form class="form-content" action="/tour" method="POST">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="eventName" placeholder="Name *" value=""/>
+                                </div>
+                                <div class="form-group">
+                                        <input type="text" class="form-control" name="location" placeholder="Location *" value=""/>
+                                </div>
+                                <div class="form-group">
+                                    <input type="date" class="form-control" name="DateOfEvent" placeholder="Date *" value=""/>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="number" name="fieldSize" class="form-control" placeholder="Field Size *" value=""/>
+                                </div>
+                              <div class="form-group">  
+                              <select name="category" class="form-control">
+                                          <option>Category</option>
+                                          <option name= "category" value="Tech">Tech</option>
+                                          <option name= "category" value="Finance">Finance</option>
+                                          <option name= "category" value="Law">Law</option>
+                                          <option name= "category" value="Politics">Politics/Government</option>
+                                          <option name= "category" value="Social">Social</option>
+                              </select>
+                              </div>
+                              <div class="form-group">
+                                    <textarea name = "description" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Description..."></textarea>
+                              </div>
+                              
+                        <div class="form-group">
+                        <button type="submit" class="btnSubmit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+        </div> 
+
+</body>
 </html>
