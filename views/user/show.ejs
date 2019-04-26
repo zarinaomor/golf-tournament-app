@@ -1,49 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <link rel="stylesheet" type="text/css" href="/css/style.css">
-        <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-    <header>
-        <h1 class="title">Welcome To Your Profile <%=user.firstName%>! </h1>
-        <div class="home-btn">
-            <button type="button" class="btn btn-primary btn-lg"> <a href="/home" style="color: white">Home</a></button>
-        </div>
-        <div>
-
-        </div>
-    </header>
-    <main>
-        <section class="left-side">
+    <div class="container">
+        <header>
+            <h1 class="title">Welcome To Your Profile <%=user.firstName%>! </h1>
+            <div class="home-btn">
+                <button type="button" class="btn btn-primary btn-lg"> <a href="/home" style="color: white">Home</a></button>
+            </div>
+        </header>
+        <main>
+            <section class="left-side">
                 <h3>Registered Tournaments</h3>
                 <ul>
                     <% for (let i = 0; i < user.signedUp.length; i++) {%>
                         <li><a href="/tour/<%=user.signedUp[i]._id%>"><%=user.signedUp[i].eventName%></a></li>
                     <% } %>
                 </ul>
-        </section>
-        <section class="left-side">
+            </section>
+            <section class="left-side">
                 <h3>Hosted Tournaments</h3>
                 <ul>
                     <% for (let i = 0; i < user.Hosted.length; i++) {%>
                         <li><a href="/tour/<%=user.Hosted[i]._id%>"><%=user.Hosted[i].eventName%></a></li>
                     <% } %>
                 </ul>
-        </section>
-    </main>
-    <footer>
-        <section>
+            </section>
+        </main>
+        <footer>
+            <section>
                 <a href="/user/<%=user._id%>/edit">Edit</a>
-        </section>
-        <section>
-            
-            <form action="/user/<%=user._id%>?_method=DELETE" method="POST">
-                <input type="submit" value="Delete"/>
-            </form>
-        </section> 
-    </footer>
-
+            </section>
+            <section>
+                <form action="/user/<%=user._id%>?_method=DELETE" method="POST">
+                    <input type="submit" value="Delete"/>
+                </form>
+            </section>
+        </footer>
+    </div>
 </body>
 </html>

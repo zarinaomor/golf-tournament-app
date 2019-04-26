@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require('../models/user');
 const Tour = require('../models/tournament');
 
+
 router.get('/new', (req,res) => {
     User.find({}, (err, allUsers) => {
             if(err) {
@@ -38,25 +39,6 @@ router.get('/:id', (req, res) => {
         })
     })
 })
-
-
-// router.delete('/:id', (req, res)=> {
-//     User.findByIdAndRemove(req.params.id, (err, deletedUser) => {
-//       if(err){
-//         res.send(err);
-//       } else {
-//         console.log(deletedUser);
-//         Tour.deleteMany({
-//           _id: {
-//             $in: deletedUser.signedUp
-//           }
-//         }, (err, data) => {
-//           console.log(data)
-//           res.redirect('/user');
-//         })
-//       }
-//     })
-//   })
   
 router.delete("/:id", async(req, res)=>{
     try{
