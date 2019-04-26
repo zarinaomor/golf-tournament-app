@@ -41,13 +41,18 @@
 /* new.ejs */
 
 /* user show.ejs */
-body {
-    font-family: 'Courgette', cursive;
+body{
+    background-image: url("https://d1yn1kh78jj1rr.cloudfront.net/image/preview/VDo3SvYFxik57ckfe/storyblocks-golf-ball-on-tee-on-white-background_SSIQIc6DG_SB_PM.jpg");
+    width: 500px;
+    background-size: cover;
+    position: center;
 }
+
 .title {
     color: #007bff;
     text-align: center; 
     font-weight: 700;
+    font-family: 'Courgette', cursive;
     
 } 
 .home-btn {
