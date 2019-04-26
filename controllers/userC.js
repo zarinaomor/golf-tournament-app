@@ -44,19 +44,28 @@ router.get('/:id', (req, res) => {
   
 router.delete("/:id", async(req, res)=>{
     try{
-        // const deletedUser = await User.findByIdAndRemove(req.params.id);
+        const deletedUser = await User.findByIdAndRemove(req.params.id);
         // for(let i = 0; i < deletedUser.Hosted.length; i++){
         //     let deletedTour = await Tour.findByIdAndRemove({_id: deletedUser.Hosted[i]})
         //     console.log(deletedTour, "<====== was deleted")
         // }
-        // for(let i = 0; i < deletedUser.signedUp.length; i++){
-        //     const foundTour = await Tour.findById({_id: deletedUser.signedUp[i]})
-        //     for (let j = 0; j < foundTour.players.length; j++){
-        //         if(foundTour.players[j] === req.params.id){
-        //             foundTour.players.splice(j, 1)
-        //         }
-        //     }
-        // }
+        for(let i = 0; i < deletedUser.signedUp.length; i++){
+            const foundTour = await Tour.findById({_id: deletedUser.signedUp[i]})
+            console.log(foundTour.players, "<====== foundTour.players ARRAY")
+            console.log(foundTour.players[12], typeof foundTour.players[0], '<===== the type for found.players[0]')
+            console.log(deletedUser._id, typeof deletedUser._id, "<====== the type for the deleteUser _id")
+            for (let j = 0; j < foundTour.players.length; j++){
+                console.log("==== went through second for loop ====")
+                console.log('player',typeof foundTour.players[j])
+                console.log('user',typeof deletedUser._id.toString())
+                console.log(foundTour.players[j].toString() === deletedUser._id.toString())
+                if(foundTour.players[j] == deletedUser._id.toString()){
+                    console.log(foundTour.players[j], "<===== should be removed")
+                    foundTour.players.splice(j, 1)
+                    console.log(foundTour.players, "<===== array of players - above should have been removed")
+                }
+            }
+        }
         req.session.logged = null;
         res.redirect("/home");
     } catch(err){
