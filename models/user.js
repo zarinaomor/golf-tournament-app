@@ -8,6 +8,8 @@ const userSchema = new mongoose.Schema({
     email: {type: String, required: true},
     password: {type: String, required: true},
     handicap: Number,
+    location: String,
+    category: String,
     signedUp: [{
         type: mongoose.Schema.Types.ObjectId, ref: 'Tournament'
     }],
