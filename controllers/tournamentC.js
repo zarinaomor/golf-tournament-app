@@ -46,6 +46,14 @@ res.render('tournaments/index.ejs', {
     });}catch(err){res.send(err)}
 })
 
+router.get('/cat/:cat', async (req, res)=>{
+    const foundTournaments = await Tournament.find({category: req.params.cat})
+    try{
+    res.render('tournaments/index.ejs', {
+        tournaments: foundTournaments
+        });}catch(err){res.send(err)}
+    })
+
 router.get('/:id', (req, res)=>{
     // req.params.id is the articles id
     Tournament.findById(req.params.id)

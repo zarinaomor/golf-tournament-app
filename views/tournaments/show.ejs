@@ -16,7 +16,7 @@
       <h2><%=tournament.location%></h2>
       <h2><%=tournament.DateOfEvent%></h2>
       <h2><%=tournament.fieldSize%></h2>
-      <h2><%=tournament.category%></h2>
+      <h2><a href="/tour/cat/<%=tournament.category%>"><%=tournament.category%></a></h2>
       <h2><a href="/user/<%=tournament.host[0]._id%>">Host: <%=name%> <%=last%></a></h2>
 
       <nav>
