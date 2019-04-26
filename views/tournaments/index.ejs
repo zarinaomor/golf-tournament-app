@@ -25,10 +25,13 @@
             <%=tournaments[i].location%>
           </li>
             <li>
-            <%=tournaments[i].DateOfEvent%>
+            <%=tournaments[i].DateOfEvent.getMonth()%>/<%=tournaments[i].DateOfEvent.getDate()%>
           </li>
             <li>
             <%=tournaments[i].fieldSize%>
+          </li>
+            <li>
+            <a href="/tour/cat/<%=tournaments[i].category%>"><%=tournaments[i].category%></a>
           </li>
           <br/>
         <% } %>

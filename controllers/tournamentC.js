@@ -6,7 +6,8 @@ const User = require('../models/user');
 router.get('/host', (req, res)=>{
     // Here we are finding all the authros
     // so we can create the select menu inside of articles/new
-    res.render('tournaments/host.ejs')
+    if(req.session.logged==true){res.render('tournaments/host.ejs')}
+    else{res.redirect('/auth/login')}
   });
 
 
@@ -26,6 +27,7 @@ router.get('/host', (req, res)=>{
 router.post('/', async (req, res)=>{
     try {
         const createdTournament = await Tournament.create(req.body)
+        console.log(createdTournament)
         const foundUser = await User.findById(req.session.usersDbId)
         foundUser.Hosted.push(createdTournament._id)
         foundUser.save()
@@ -39,11 +41,21 @@ router.post('/', async (req, res)=>{
 
 router.get('/', async (req, res)=>{
 const foundTournaments = await Tournament.find({})
-try{
+if (req.session.logged==true)try{
 res.render('tournaments/index.ejs', {
     tournaments: foundTournaments
-    });}catch(err){res.send(err)}
+    });}catch(err){res.send(err)}else {
+        res.redirect('/auth/login')
+    }
 })
+
+router.get('/cat/:cat', async (req, res)=>{
+    const foundTournaments = await Tournament.find({category: req.params.cat})
+    try{
+    res.render('tournaments/index.ejs', {
+        tournaments: foundTournaments
+        });}catch(err){res.send(err)}
+    })
 
 router.get('/:id', (req, res)=>{
     // req.params.id is the articles id

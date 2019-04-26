@@ -11,7 +11,7 @@
   </head>
   <body>
     <header>
-      <h1>Create an Event</h1>
+      <h1>Create a ParTee</h1>
       <a href="/home">Home</a>
     </header>
     <main>
@@ -20,7 +20,15 @@
         <input type="text" name="location" placeholder="Location" /><br/>
         <input type="date" name="DateOfEvent" value="Date"/><br/>
         <input type="number" name="fieldSize" placeholder= "Field Size"/><br/>
-        <input type="submit" value="Submit for Approval"/>
+        <select name="category">
+          <option>Category</option>
+          <option name= "category" value="Tech">Tech</option>
+          <option name= "category" value="Finance">Finance</option>
+          <option name= "category" value="Law">Law</option>
+          <option name= "category" value="Politics">Politics/Government</option>
+          <option name= "category" value="Social">Social</option>
+        </select><br/>
+        <input class="btn btn-success" type="submit" value="Submit ParTee"/>
       </form>
     </main>
   </body>
