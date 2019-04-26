@@ -60,19 +60,19 @@ router.get('/:id', (req, res) => {
   
 router.delete("/:id", async(req, res)=>{
     try{
-        const deletedUser = await User.findByIdAndDelete(req.params.id);
-        for(let i = 0; i < deletedUser.Hosted.length; i++){
-            const deletedTour = await Tour.findByIdAndRemove(deletedUser.Hosted[i])
-            console.log(deletedTour)
-        }
-        for(let i = 0; i < deletedUser.signedUp.length; i++){
-            const foundTour = await Tour.findById(deletedUser.signedUp[i])
-            for (let j = 0; j < foundTour.players.length; j++){
-                if(foundTour.players[j] === req.params.id){
-                    foundTour.players.splice(j, 1)
-                }
-            }
-        }
+        // const deletedUser = await User.findByIdAndRemove(req.params.id);
+        // for(let i = 0; i < deletedUser.Hosted.length; i++){
+        //     let deletedTour = await Tour.findByIdAndRemove({_id: deletedUser.Hosted[i]})
+        //     console.log(deletedTour, "<====== was deleted")
+        // }
+        // for(let i = 0; i < deletedUser.signedUp.length; i++){
+        //     const foundTour = await Tour.findById({_id: deletedUser.signedUp[i]})
+        //     for (let j = 0; j < foundTour.players.length; j++){
+        //         if(foundTour.players[j] === req.params.id){
+        //             foundTour.players.splice(j, 1)
+        //         }
+        //     }
+        // }
         req.session.logged = null;
         res.redirect("/home");
     } catch(err){
