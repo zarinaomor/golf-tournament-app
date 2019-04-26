@@ -28,6 +28,7 @@ router.post('/', async (req, res) => {
   
         } else {
           req.session.message = "email or password is incorrect";
+          console.log(req.session);
           res.redirect('/auth/login');
         }
   
