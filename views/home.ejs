@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="css/home.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     </head>
     <body class="home-body">
         <div id="home-main">
@@ -31,15 +32,15 @@
             </div>
             <% } else { %>
             <div id="home-login">
-                <h6>(login icon)</h6>
+                <i class="far fa-user"></i>
                 <form action="/home" method="POST">
                     <input type="text" name="email" placeholder="email">
                     <input type="password" name="password" placeholder="password">
                     <button type="submit">Login</button><br/>
                 </form>
                 <a href="/user/new">Sign Up</a>
-            <% } %>
             </div>    
+            <% } %>
         </div>
         <footer>
         footer

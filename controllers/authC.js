@@ -9,6 +9,9 @@ router.get('/login', (req,res)=>{
 router.post('/register', async (req, res) => {
   try {
     const createdUser = await User.create(req.body);
+    req.session.message = '';
+    req.session.logged = true;
+    req.session.usersDbId = createdUser._id;
     console.log(createdUser)
     res.redirect(`/user/${createdUser._id}`);
   
