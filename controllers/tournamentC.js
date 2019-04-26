@@ -14,6 +14,7 @@ router.get('/host', (req, res)=>{
    const foundTour = await Tournament.findById(req.params.id);
    const foundUser = await User.findById(req.session.usersDbId)
    foundTour.players.push(foundUser._id)
+   foundTour.save()
    console.log(foundUser)
    console.log(foundTour)
    res.redirect('/tour')
