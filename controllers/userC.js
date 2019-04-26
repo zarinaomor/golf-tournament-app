@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require('../models/user');
 const Tour = require('../models/tournament');
 
+
 router.get('/new', (req,res) => {
     User.find({}, (err, allUsers) => {
             if(err) {
@@ -14,7 +15,6 @@ router.get('/new', (req,res) => {
             }
         });
     })
-
 
 
 
