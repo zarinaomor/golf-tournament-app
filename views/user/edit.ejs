@@ -1,35 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body>
-    <header>
-            <h1>Edit <%=user.firstName%>'s Account</h1>
-            <nav>
-                <ul>
-                    <li>
-                        <a href="/home">Home</a>
-                    </li>
-                </ul>
-            </nav>
-    </header>
-    <main>
-        <form action="/user/<%=user._id%>?_method=PUT" method="POST">
-            <input type="text" name="lastName" value="<%-user.lastName%>"><br/>
-            <input type="text" name="firstName" value="<%-user.firstName%>"><br/>
-            <input type="text" name="email" value="<%-user.email%>"><br/>
-            <input type="submit" value="Save Changes"/>
-        </form>
+<body>  
+        <div class="container-right">
+                <div class="card-header">
+                        
+                    <h2 class="card-title mb-0">Edit Your Profile</h2>
+                    <div class="card-body">
+                            <form>
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <label for="inputUsername">Username</label>
+                                            <input type="text" class="form-control" id="inputUsername" placeholder="Username">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputUsername">Biography</label>
+                                            <textarea rows="2" class="form-control" id="inputBio" placeholder="Tell something about yourself"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="text-center">
+                                            <img alt="Andrew Jones" src="https://bootdey.com/img/Content/avatar/avatar1.png" class="rounded-circle img-responsive mt-2" width="128" height="128">  
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
     
-    </main>
-    
+                        </div>
+                <div class="card-body">
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="inputFirstName">First name</label>
+                                <input type="text" class="form-control" id="inputFirstName" name="firstName" placeholder="First name">
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="inputLastName">Last name</label>
+                                <input type="text" class="form-control" id="inputLastName" name="lastName" placeholder="Last name">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="inputemail">Email</label>
+                                    <input type="text" class="form-control" id="inputemail" name="email" placeholder="Email">
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label for="inputCity">City</label>
+                                    <input type="text" class="form-control" id="inputCity" name="city" placeholder="City">
+                                </div>
+                            </div>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </form>
 
+                </div>
+            </div>
+        </div> 
+ 
+                
 
-
+        
 </body>
 </html>
