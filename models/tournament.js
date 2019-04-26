@@ -6,6 +6,7 @@ const tournamentSchema = new mongoose.Schema({
     location: {type: String, required: true},
     DateOfEvent: {type: Date, required: true},
     fieldSize: Number,
+    category: String,
     players: [{
         type: mongoose.Schema.Types.ObjectId, ref: 'User'
     }],

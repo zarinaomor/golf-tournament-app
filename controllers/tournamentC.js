@@ -14,7 +14,10 @@ router.get('/host', (req, res)=>{
    const foundTour = await Tournament.findById(req.params.id);
    const foundUser = await User.findById(req.session.usersDbId)
    foundTour.players.push(foundUser._id)
-   foundTour.save()
+   foundTour.save();
+   
+   foundUser.signedUp.push(foundTour._id);
+   foundUser.save();
    console.log(foundUser)
    console.log(foundTour)
    res.redirect('/tour')
@@ -23,6 +26,7 @@ router.get('/host', (req, res)=>{
 router.post('/', async (req, res)=>{
     try {
         const createdTournament = await Tournament.create(req.body)
+        console.log(createdTournament)
         const foundUser = await User.findById(req.session.usersDbId)
         foundUser.Hosted.push(createdTournament._id)
         foundUser.save()
