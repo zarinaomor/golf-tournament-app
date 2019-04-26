@@ -3,16 +3,17 @@
 {
     text-align: center;
     height: 80px;
-    background-image: -webkit-linear-gradient(left, #0072ff, #8811c5);
+    background-image: -webkit-linear-gradient(left, #0072ff, #007bff);
     color:white;
     font-weight: bold;
     line-height: 80px;
+    font-size: 30px;
 }
 
 .form-content
 {
     padding: 5%;
-    border: 1px solid #ced4da;
+    border: 1px solid #007bff;
     margin-bottom: 2%;
 }
 .form-control{
@@ -27,7 +28,7 @@
     padding: 1%;
     width: 20%;
     cursor: pointer;
-    background: #0062cc;
+    background: #007bff;
     color: #fff;
     /* margin-left: 360px; */
 
@@ -41,30 +42,67 @@
 /* new.ejs */
 
 /* user show.ejs */
-body{
-    background-image: url("https://d1yn1kh78jj1rr.cloudfront.net/image/preview/VDo3SvYFxik57ckfe/storyblocks-golf-ball-on-tee-on-white-background_SSIQIc6DG_SB_PM.jpg");
-    width: 500px;
-    background-size: cover;
-    position: center;
+
+header {
+    margin-bottom: 50px;
+}
+.image {
+    border: 3px #007bff solid;
+    border-radius: 10px;
+    display: inline-block;
+    width: 45%;
+    float: left;
+     margin: 10px 100px 50px 100px;
+     height: 300px;
+  
+   
 }
 
-.title {
+
+.container {
     color: #007bff;
-    text-align: center; 
     font-weight: 700;
     font-family: 'Courgette', cursive;
-    
+    border: 1px solid #007bff;
+   
+}
+.title {
+   margin-top: 30px;
+    text-align: center;
+   
 } 
+
 .home-btn {
     text-align: center;
     
-}
+    
+} 
 
 .left-side {
     display: inline-block;
+    width: 200px;
+    float: left;
+    
+   
+}
+å
+.right-side {
+    display: inline-block;
+    width: 200px;
+    float: right;
+  
+    
 }
 
-.right-side {
+
+footer {
+   clear: both;
+   text-align: center;
+}
+.edit-btn {
+    display: inline-block;
+}
+.delete-btn {
     display: inline-block;
 }
 

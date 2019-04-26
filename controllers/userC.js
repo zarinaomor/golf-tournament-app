@@ -41,6 +41,36 @@ router.get('/new', (req,res) => {
             res.send(err);
         }
     })
+    
+    router.get('/:id', (req, res) => {
+        User.findById(req.params.id)
+        .populate('tournament')
+        .exec((err, foundUser) => {
+            console.log(foundUser);
+            res.render('user/show.ejs', {
+                user: foundUser
+            })
+        })
+    })
+    
+    
+    router.delete('/:id', (req, res)=> {
+        User.findByIdAndRemove(req.params.id, (err, deletedUser) => {
+          if(err){
+            res.send(err);
+          } else {
+            console.log(deletedUser);
+            Tour.deleteMany({
+              _id: {
+                $in: deletedUser.signedUp
+              }
+            }, (err, data) => {
+              console.log(data)
+              res.redirect('/user');
+            })
+          }
+        })
+      })
 
 
 module.exports = router;
