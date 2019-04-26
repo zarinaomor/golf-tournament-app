@@ -42,7 +42,8 @@ router.get('/', async (req, res)=>{
 const foundTournaments = await Tournament.find({})
 if (req.session.logged==true)try{
 res.render('tournaments/index.ejs', {
-    tournaments: foundTournaments
+    tournaments: foundTournaments,
+    userProfile: req.session.usersDbId
     });}catch(err){res.send(err)}else {
         res.redirect('/auth/login')
     }
@@ -52,7 +53,8 @@ router.get('/cat/:cat', async (req, res)=>{
     const foundTournaments = await Tournament.find({category: req.params.cat})
     try{
     res.render('tournaments/index.ejs', {
-        tournaments: foundTournaments
+        tournaments: foundTournaments,
+        userProfile: req.session.usersDbId
         });}catch(err){res.send(err)}
     })
 
