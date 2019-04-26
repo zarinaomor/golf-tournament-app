@@ -14,37 +14,23 @@ router.get('/new', (req,res) => {
             }
         });
     })
-1
+
 router.post('/', async (req, res) => {
     try {
-        const foundUser = await User.findOne({'email': req.body.email});
-        console.log(foundUser)
-        if(foundUser) {
-            console.log(foundUser.validPassword(req.body.password))
-            if(foundUser.validPassword(req.body.password)) {
-                console.log("valid password")
-                req.session.message = '';
-                req.session.logged = true;
-                req.session.userDbId = foundUser._id;
-                console.log(req.session, ' successful in login')
-                res.redirect('/home');
-
-            } else {
-                req.session.message = "Username or password is incorrect";
-                res.redirect('/auth/login');
-            }
-        } else {
-            res.redirect('/auth/login');
-        }
+        const newUser = await User.create(req.body);
+        req.session.message = '';
+        req.session.logged = true;
+        req.session.usersDbId = newUser._id;
+        res.redirect(`/user/${newUser._id}`);
 
     } catch(err){
-        res.send(err);
+        res.send(err)
     }
-})
+});
 
 router.get('/:id', (req, res) => {
     User.findById(req.params.id)
-    .populate('tournament')
+    .populate('Hosted').populate('signedUp')
     .exec((err, foundUser) => {
         console.log(foundUser);
         res.render('user/show.ejs', {
@@ -54,23 +40,44 @@ router.get('/:id', (req, res) => {
 })
 
 
-router.delete('/:id', (req, res)=> {
-    User.findByIdAndRemove(req.params.id, (err, deletedUser) => {
-      if(err){
-        res.send(err);
-      } else {
-        console.log(deletedUser);
-        Tour.deleteMany({
-          _id: {
-            $in: deletedUser.signedUp
-          }
-        }, (err, data) => {
-          console.log(data)
-          res.redirect('/user');
-        })
-      }
-    })
-  })
+// router.delete('/:id', (req, res)=> {
+//     User.findByIdAndRemove(req.params.id, (err, deletedUser) => {
+//       if(err){
+//         res.send(err);
+//       } else {
+//         console.log(deletedUser);
+//         Tour.deleteMany({
+//           _id: {
+//             $in: deletedUser.signedUp
+//           }
+//         }, (err, data) => {
+//           console.log(data)
+//           res.redirect('/user');
+//         })
+//       }
+//     })
+//   })
   
+router.delete("/:id", async(req, res)=>{
+    try{
+        const deletedUser = await User.findByIdAndDelete(req.params.id);
+        for(let i = 0; i < deletedUser.Hosted.length; i++){
+            const deletedTour = await Tour.findByIdAndRemove(deletedUser.Hosted[i])
+            console.log(deletedTour)
+        }
+        for(let i = 0; i < deletedUser.signedUp.length; i++){
+            const foundTour = await Tour.findById(deletedUser.signedUp[i])
+            for (let j = 0; j < foundTour.players.length; j++){
+                if(foundTour.players[j] === req.params.id){
+                    foundTour.players.splice(j, 1)
+                }
+            }
+        }
+        req.session.logged = null;
+        res.redirect("/home");
+    } catch(err){
+        res.send(err)
+    }
+})
 
 module.exports = router;
