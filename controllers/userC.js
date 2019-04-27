@@ -38,28 +38,8 @@ router.get('/:id', (req, res) => {
         })
     })
 })
- 
-router.delete("/:id", async(req, res)=>{
-    try{
-        const deletedUser = await User.findByIdAndRemove(req.params.id);
-        for(let i = 0; i < deletedUser.Hosted.length; i++){
-            let deletedTour = await Tour.findByIdAndRemove({_id: deletedUser.Hosted[i]})
-        }
-        for(let i = 0; i < deletedUser.signedUp.length; i++){
-            const foundTour = await Tour.findById({_id: deletedUser.signedUp[i]})
-            for (let j = 0; j < foundTour.players.length; j++){
-                if(foundTour.players[j].toString() === deletedUser._id.toString()){
-                    foundTour.players.splice(j, 1);
-                }
-            }
-            foundTour.save();
-        }
-        req.session.destroy();
-        res.redirect("/home");
-    } catch(err){
-        res.send(err)
-    }
-})
+
+
 
 router.get('/:id/edit', (req, res) => {
     User.findById(req.params.id, (err, foundUser) => {
@@ -67,6 +47,12 @@ router.get('/:id/edit', (req, res) => {
             user: foundUser
         })
     })
+})
+
+router.delete('/:id', (req, res)=> {
+    User.findByIdAndRemove(req.params.id, ()=>{
+		res.redirect('/home');
+	});
 })
 
 router.put('/:id', (req, res) => {
