@@ -53,26 +53,24 @@
             <div class="card-body">
                 <a href= "/tour/<%=tournaments[i]._id%>"> <h5 class="card-title"><%=tournaments[i].eventName%></h5></a>
                 <p class="card-text"><%=tournaments[i].description%></p>
-         <% if(tournaments[i].fieldSize > tournaments[i].players.length){ %>
-            <form action="/tour/<%=tournaments[i]._id%>?_method=PUT" method="post">
+<%let m=0
+for (j=0;j<tournaments[i].players.length;j++){
+    if(tournaments[i].players[j]== userProfile){
+        %>            <form action="/tour/<%=tournaments[i]._id%>?_method=PUT" method="post">
                 <input class="btn btn-success" type="submit" value="Sign Up"/>
-            </form> 
-            <br/>
-            <form action="/tour/<%=tournaments[i]._id%>?_method=DELETE" method="post">
+            </form> <%
+        m=1
+    }
+} if (m==0 && tournaments[i].fieldSize > tournaments[i].players.length){
+    %>            <form action="/tour/<%=tournaments[i]._id%>?_method=DELETE" method="post">
               <input class="btn btn-danger" type="submit" value="Unregister"/>
-            </form> 
-
-            <% } else { %>
-            <form>
+            </form> <%
+} else if (m==0){
+    %>            <form>
                 <input class="btn btn-danger" type="submit" value="Full"/>
-            </form>
-            <br/>
-            <form action="/tour/<%=tournaments[i]._id%>?_method=DELETE" method="post">
-              <input class="btn btn-danger" type="submit" value="Unregister"/>
-            </form> 
- 
-                </div>    
-                <% } %>
+            </form><%
+}%>
+
                 </div>
             </div>
         <% } %>
