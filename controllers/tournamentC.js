@@ -14,8 +14,10 @@ router.get('/host', (req, res)=>{
         const createdTournament = await Tournament.create(req.body)
         const foundUser = await User.findById(req.session.usersDbId)
         foundUser.Hosted.push(createdTournament._id)
+        foundUser.signedUp.push(createdTournament._id)
         foundUser.save()
         createdTournament.host = foundUser._id
+        createdTournament.players = foundUser._id
         createdTournament.save()
         res.redirect(`/tour/${createdTournament._id}`)
         }
