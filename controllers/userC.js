@@ -50,10 +50,22 @@ router.get('/:id/edit', (req, res) => {
 })
 
 router.delete('/:id', (req, res)=> {
-    User.findByIdAndRemove(req.params.id, ()=>{
-		res.redirect('/home');
-	});
-})
+    User.findByIdAndRemove(req.params.id, (err, deletedUser) => {
+      if(err){
+        res.send(err);
+      } else {
+        console.log(deletedUser);
+        Tour.deleteMany({
+          _id: {
+            $in: deletedUser.signedUp // array of article ids to delete
+          }
+        }, (err, data) => {
+          res.redirect('/home');
+        })
+      }
+    })
+  })
+  
 
 router.put('/:id', (req, res) => {
     User.findByIdAndUpdate(req.params.id, req.body, (err, updatedUser) => {
