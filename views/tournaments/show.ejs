@@ -55,6 +55,10 @@
             <form>
                 <input class="btn btn-danger" type="submit" value="Full"/>
             </form> 
+            <br/>
+            <form action="/tour/<%=tournaments[i]._id%>?_method=DELETE" method="post">
+              <input class "btn btn-danger"type="submit" value="Delete Tournament"/>
+            </form>  
             <br/> 
             </div>    
             <% } %>

@@ -16,11 +16,8 @@ router.get('/host', (req, res)=>{
    const foundUser = await User.findById(req.session.usersDbId)
    foundTour.players.push(foundUser._id)
    foundTour.save();
-   
    foundUser.signedUp.push(foundTour._id);
    foundUser.save();
-   console.log(foundUser)
-   console.log(foundTour)
    res.redirect('/tour')
 })
 
@@ -69,6 +66,21 @@ router.get('/:id', (req, res)=>{
                 })}  
 )})
 
+router.delete('/:id', async (req, res)=>{
+    // Delete the article, is the purpose of line 153
+    const foundUser = await User.findById(req.session.usersDbId)
+    console.log('before deletion')
+    console.log(foundUser)
+    User.findById(req.session.usersDbId).find({signedUp:req.params.id},(err,foundShit)=>{
+        if (err){resizeBy.send(err)}
+        else{console.log(foundShit)}
+    })
+    foundUser.signedUp.remove(req.params.id)
+    foundUser.save();
+    console.log('did it delete?')
+    console.log(foundUser)
+
+  });
   
 
 
