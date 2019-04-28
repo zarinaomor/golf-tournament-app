@@ -52,4 +52,10 @@ router.post("/logout", (req, res)=>{
   })
 })
 
+router.put('/:id', (req, res) => {
+  Tournament.findByIdAndUpdate(req.params.id, req.body, (err, updatedTournament) => {
+      res.redirect(`/tour/${req.params.id}`);
+  });
+});
+
 module.exports = router;

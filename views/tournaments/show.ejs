@@ -9,6 +9,7 @@
     <div class="container">
         <header>
             <h1 class="title"><%=tournament.eventName%> </h1>
+
             <div class="home-btn">
                 <button type="button" class="btn btn-primary btn-lg"> <a href="/home" style="color: white">Home</a></button>
             </div>
@@ -40,7 +41,7 @@
             <section class="right-side">
                 <h3>Description</h3>
                 <ul>
-                    <li>Host: <a href="/user/<%=tournament.host[0]._id%>"><%=name%> <%=last%></a></li>
+                    <li>Host: <a href="/user/<%=tournament.host._id%>"><%=name%> <%=last%></a></li>
                     <li><%=tournament.description%></li>
                 </ul>
             </section>
@@ -77,6 +78,14 @@ for (j=0;j<tournament.players.length;j++){
             </div>    
             <% } %>
         <br/> 
+        <%if(tournament.host==userId){%>
+        <form >
+                <input class="btn btn-success" href="/tour/<%=tournament._id%>/edit"type="submit" value="Edit"/>
+            </form>  <%}%>
+                                <%if(tournament.host._id==userId){%>            <div class="home-btn">
+                <button type="button" class="btn btn-primary btn-lg"> <a href="/tour/<%=tournament._id%>/edit" style="color: white">Edit</a></button>
+            </div>
+<br/><%}%>
         </footer>
     </div>
 </body>

@@ -10,6 +10,22 @@ router.get('/host', (req, res)=>{
     else{res.redirect('/auth/login')}
   });
 
+  router.put('/:id/edit', (req, res) => {
+    Tournament.findByIdAndUpdate(req.params.id, req.body, (err, updatedUser) => {
+        res.redirect(`/tour/${req.params.id}`);
+    });
+});
+
+  router.get('/:id/edit', (req, res) => {
+    Tournament.findById(req.params.id, (err, foundTournament) => {
+        //console.log(req.session)
+        res.render('tournaments/edit.ejs', {
+            tournament: foundTournament
+        })
+        console.log(foundTournament.host)
+        console.log(req.session.usersDbId)
+    })
+})
 
   router.put('/:id', async (req, res)=>{
    const foundTour = await Tournament.findById(req.params.id);
@@ -61,8 +77,9 @@ router.get('/:id', (req, res)=>{
         .populate('host').exec((err,foundTournament)=>{
             res.render('tournaments/show.ejs', {    
                 tournament: foundTournament,
-                name: foundTournament.host[0].firstName,
-                last: foundTournament.host[0].lastName
+                name: foundTournament.host.firstName,
+                last: foundTournament.host.lastName,
+                userId: req.session.usersDbId
                 })}  
 )})
 
