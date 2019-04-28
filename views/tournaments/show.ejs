@@ -56,9 +56,23 @@
                 <input class="btn btn-danger" type="submit" value="Full"/>
             </form> 
             <br/>
-            <form action="/tour/<%=tournaments[i]._id%>?_method=DELETE" method="post">
-              <input class "btn btn-danger"type="submit" value="Delete Tournament"/>
-            </form>  
+<%let m=0
+for (j=0;j<tournament.players.length;j++){
+    if(tournament.players[j]== userProfile){
+        %>             <form action="/tour/<%=tournament._id%>?_method=DELETE" method="post">
+              <input class="btn btn-danger" type="submit" value="Unregister"/>
+            </form><%
+        m=1
+    }
+} if (m==0 && tournament.fieldSize > tournament.players.length){
+    %> <form action="/tour/<%=tournament._id%>?_method=PUT" method="post">
+                <input class="btn btn-success" type="submit" value="Sign Up"/>
+            </form>            <%
+} else if (m==0){
+    %>            <form>
+                <input class="btn btn-danger" type="submit" value="Full"/>
+            </form><%
+}%> 
             <br/> 
             </div>    
             <% } %>
