@@ -12,7 +12,7 @@ router.post('/register', async (req, res) => {
     req.session.message = '';
     req.session.logged = true;
     req.session.usersDbId = createdUser._id;
-    req.session.timeStamp = new Date();    
+    req.session.userTimeStamp = new Date();    
     console.log(createdUser)
     res.redirect(`/user/${createdUser._id}`);
   
@@ -32,7 +32,7 @@ router.post('/register', async (req, res) => {
           req.session.message = '';
           req.session.logged = true;
           req.session.usersDbId = foundUser._id;
-          req.session.timeStamp = new Date();
+          req.session.userTimeStamp = new Date();
           console.log(req.session, ' successful in login')
           res.redirect('/home');
   
