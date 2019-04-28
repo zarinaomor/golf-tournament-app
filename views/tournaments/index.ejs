@@ -58,10 +58,9 @@
                 <input class="btn btn-success" type="submit" value="Sign Up"/>
             </form> 
             <br/>
-            <% if(tournaments[i].players.find(userProfile)){%>
             <form action="/tour/<%=tournaments[i]._id%>?_method=DELETE" method="post">
               <input class="btn btn-danger" type="submit" value="Unregister"/>
-            </form> <%}%>
+            </form> 
 
             <% } else { %>
             <form>

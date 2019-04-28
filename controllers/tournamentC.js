@@ -71,14 +71,13 @@ router.delete('/:id', async (req, res)=>{
     const foundUser = await User.findById(req.session.usersDbId)
     console.log('before deletion')
     console.log(foundUser)
-    User.findById(req.session.usersDbId).find({signedUp:req.params.id},(err,foundShit)=>{
-        if (err){resizeBy.send(err)}
-        else{console.log(foundShit)}
-    })
     foundUser.signedUp.remove(req.params.id)
     foundUser.save();
     console.log('did it delete?')
     console.log(foundUser)
+    const foundTournament = await Tournament.findById(req.params.id)
+    foundTournament.players.remove(req.session.usersDbId)
+    foundTournament.save()
 
   });
   
