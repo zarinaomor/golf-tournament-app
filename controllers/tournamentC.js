@@ -68,7 +68,7 @@ router.get('/:id', (req, res)=>{
 
 router.delete('/:id', async (req, res)=>{
     // Delete the article, is the purpose of line 153
-    const foundUser = await User.findById(req.session.usersDbId)
+    try{const foundUser = await User.findById(req.session.usersDbId)
     console.log('before deletion')
     console.log(foundUser)
     foundUser.signedUp.remove(req.params.id)
@@ -78,6 +78,9 @@ router.delete('/:id', async (req, res)=>{
     const foundTournament = await Tournament.findById(req.params.id)
     foundTournament.players.remove(req.session.usersDbId)
     foundTournament.save()
+    res.redirect('/tour')}catch(err){
+        res.send(err)
+    }
 
   });
   
