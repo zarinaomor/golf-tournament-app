@@ -23,6 +23,7 @@ router.post('/', async (req, res) => {
           req.session.message = '';
           req.session.logged = true;
           req.session.usersDbId = foundUser._id;
+          req.session.userTimeStamp = new Date();    
           console.log(req.session, ' successful in login')
           res.redirect(`/user/${foundUser._id}`);
   
