@@ -2,10 +2,11 @@ const express = require('express');
 const router = express.Router();
 const Tournament = require('../models/tournament');
 const User = require('../models/user');
+const GolfCourses = require('../models/clubs')
 
 router.get('/host', (req, res)=>{
 
-    if(req.session.logged==true){res.render('tournaments/host.ejs')}
+    if(req.session.logged==true){res.render('tournaments/host.ejs',{golfCourses: GolfCourses})}
     else{res.redirect('/auth/login')}
   });
 
@@ -21,7 +22,7 @@ router.get('/host', (req, res)=>{
         createdTournament.save()
         res.redirect(`/tour/${createdTournament._id}`)
         }
-        catch(err){res.send(err)}})
+        catch(err){res.redirect('tour/host')}})
 
   router.put('/:id/edit', (req, res) => {
     Tournament.findByIdAndUpdate(req.params.id, req.body, (err, updatedUser) => {
@@ -53,7 +54,7 @@ router.get('/host', (req, res)=>{
 
 
 router.get('/', async (req, res)=>{
-const foundTournaments = await Tournament.find({DateOfEvent: {$gt: req.session.userTimeStamp}});
+const foundTournaments = await Tournament.find({});
 if (req.session.logged==true)try{
 res.render('tournaments/index.ejs', {
     tournaments: foundTournaments,
@@ -75,6 +76,7 @@ router.get('/cat/:cat', async (req, res)=>{
 router.get('/:id', (req, res)=>{
     Tournament.findById(req.params.id)
         .populate('host').exec((err,foundTournament)=>{
+            console.log(foundTournament)
             res.render('tournaments/show.ejs', {    
                 tournament: foundTournament,
                 name: foundTournament.host.firstName,
@@ -83,27 +85,7 @@ router.get('/:id', (req, res)=>{
                 })}  
 )})
 
-router.delete("/:id", async(req, res)=>{
-    try{
-        const deletedUser = await User.findByIdAndRemove(req.params.id);
-        for(let i = 0; i < deletedUser.Hosted.length; i++){
-            let deletedTour = await Tour.findByIdAndRemove({_id: deletedUser.Hosted[i]})
-        }
-        for(let i = 0; i < deletedUser.signedUp.length; i++){
-            const foundTour = await Tour.findById({_id: deletedUser.signedUp[i]})
-            for (let j = 0; j < foundTour.players.length; j++){
-                if(foundTour.players[j].toString() === deletedUser._id.toString()){
-                    foundTour.players.splice(j, 1);
-                }
-            }
-            foundTour.save();
-        }
-        req.session.destroy();
-        res.redirect("/home");
-    } catch(err){
-        res.send(err)
-    }
-})
+
 
 router.delete('/:id', async (req, res)=>{
     try{const foundUser = await User.findById(req.session.usersDbId)
@@ -121,6 +103,23 @@ router.delete('/:id', async (req, res)=>{
     }
 
   });
+
+  router.delete('/:id/edit', (req, res)=> {
+    Tournament.findByIdAndRemove(req.params.id, (err, deletedTournament) => {
+      if(err){
+        res.send(err);
+      } else {
+        console.log(deletedTournament);
+        //Tour.deleteMany({
+        //  _id: {
+        //    $in: deletedUser.signedUp // array of article ids to delete
+        //  }
+        //}, (err, data) => {
+          res.redirect('/home');
+        }}
+    )
+    })
+
   
 
 
