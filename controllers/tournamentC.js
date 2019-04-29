@@ -73,6 +73,7 @@ router.get('/cat/:cat', async (req, res)=>{
 router.get('/:id', (req, res)=>{
     Tournament.findById(req.params.id)
         .populate('host').exec((err,foundTournament)=>{
+            console.log(foundTournament)
             res.render('tournaments/show.ejs', {    
                 tournament: foundTournament,
                 name: foundTournament.host.firstName,
@@ -97,6 +98,7 @@ router.delete('/:id', async (req, res)=>{
     }
 
   });
+
   
 
 
