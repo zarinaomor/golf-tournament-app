@@ -23,6 +23,7 @@ router.post('/', async (req, res) => {
           req.session.message = '';
           req.session.logged = true;
           req.session.usersDbId = foundUser._id;
+          req.session.userTimeStamp = new Date();    
           console.log(req.session, ' successful in login')
           res.redirect(`/user/${foundUser._id}`);
   
@@ -51,5 +52,11 @@ router.post("/logout", (req, res)=>{
     }
   })
 })
+
+router.put('/:id', (req, res) => {
+  Tournament.findByIdAndUpdate(req.params.id, req.body, (err, updatedTournament) => {
+      res.redirect(`/tour/${req.params.id}`);
+  });
+});
 
 module.exports = router;
