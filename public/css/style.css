@@ -3,7 +3,7 @@
 {
     text-align: center;
     height: 80px;
-    background-image: -webkit-linear-gradient(left, #0072ff, #007bff);
+    background-image: -webkit-linear-gradient(left, #f79d00, #64f38c);
     color:white;
     font-weight: bold;
     line-height: 80px;
@@ -14,8 +14,8 @@
 .form-content
 {
     padding: 5%;
-    border: 1px solid #007bff;
     margin-bottom: 2%;
+   
 }
 .form-control{
     border-radius:1.5rem;
@@ -29,7 +29,7 @@
     padding: 1%;
     width: 20%;
     cursor: pointer;
-    background: #007bff;
+    background-image: -webkit-linear-gradient(left, #f79d00, #64f38c);
     color: #fff;
     /* margin-left: 360px; */
 
