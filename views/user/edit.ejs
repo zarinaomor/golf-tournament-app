@@ -50,14 +50,19 @@
                                     <input type="text" class="form-control" id="inputCity" name="city" placeholder="City">
                                 </div>
                             </div>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <form action="/user/<%=user._id%>?_method=PUT" method="POST">
+                            <button type="submit" class="btn btn-primary" style="display: inline">Save changes</button>
+                        </form>
                         <div class="delete-btn">
-                                <form action="/home/<%=user._id%>?_method=DELETE" method="POST">
-                                    <button type="submit" class="btn btn-primary">Delete Account</button>
-                                </form>
-                            </div>  
+                            <form action="/user/<%=user._id%>?_method=DELETE" method="POST">
+                                <button type="submit" class="btn btn-primary" style="display: inline">Delete Account</button>
+                            </form>
+                        </div> 
+                        <form action="/home">
+                            <button type="button" href="/user/<%=user._id%>" class="btn btn-primary" style="display: inline">Cancel</button>
+                        </form>   
                     </form>
-                        <button type="button" href="/user/id" class="btn btn-primary">cancel</button>
+                        
 
                 </div>
            
