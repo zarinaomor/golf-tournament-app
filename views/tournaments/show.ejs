@@ -47,7 +47,10 @@
                         Location: <%=tournament.location%>
                     </li>
                     <li>
-                        Date: <%=tournament.DateOfEvent.getMonth()%>/<%=tournament.DateOfEvent.getDate()%>
+                        Date: <%=tournament.DateOfEvent.getMonth()+1%>/<%=tournament.DateOfEvent.getDate()%>
+                    </li>
+                    <li>
+                        Estimated tee-time: <%=tournament.DateOfEvent.getHours()%>:<%=tournament.DateOfEvent.getMinutes()%>
                     </li>
                     <li>
                         Max Field Size: <%=tournament.fieldSize%>
