@@ -15,7 +15,8 @@ const userSchema = new mongoose.Schema({
     }],
     Hosted: [{
         type: mongoose.Schema.Types.ObjectId, ref: 'Tournament'
-    }]
+    }],
+    notifications: [String]
 })
 
 userSchema.methods.hashPassword = function(password){

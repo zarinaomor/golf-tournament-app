@@ -47,7 +47,10 @@
                         city: <%=tournament.city%>
                     </li>
                     <li>
-                        Date: <%=tournament.eventDate.toUTCString()%>
+                        Date: <%=tournament.eventDate.toDateString()%>
+                    </li>
+                    <li>
+                        Estimated tee-time: <%=tournament.eventDate.getHours()%>:<%=tournament.eventDate.getMinutes()%>
                     </li>
                     <li>
                         Max Field Size: <%=tournament.groupSize%>
@@ -60,9 +63,56 @@
                     </li>
                 </ul>
             </section>
+            <%if(tournament.location == 'The Links at Terranea'){%>
             <aside>
-            <img class="image" src="https://www.atlantisbahamas.com/media/Things%20To%20Do/Activities/Golf/Hero/Golf%20course%20HERO_updated.jpg">
+            <img class="image" src="https://img.grouponcdn.com/deal/cH2Z5WaUXj33KD5UFUtP/Pw-700x420/v1/c700x420.jpg">
             </aside>
+            <%}%>
+            <%if(tournament.location == 'Eighteen Hole at Van Nuys Golf Course'){%>
+            <aside>
+            <img class="image" src="https://golfadvisor.brightspotcdn.com/dims4/default/5379b42/2147483647/strip/true/crop/640x360+0+10/resize/590x332!/format/jpg/quality/90/?url=https%3A%2F%2Fgolfadvisor.brightspotcdn.com%2F31%2F67%2F83064bc75c68efe3633b2ebeaeee%2F91373.jpg">
+            </aside>
+            <%}%>
+            <%if(tournament.location == 'Black Gold Golf Club'){%>
+            <aside>
+            <img class="image" src="https://blackgoldgolf.com/golf/proto/blackgoldgolf/images/course_photo.jpg">
+            </aside>
+            <%}%>
+            <%if(tournament.location == 'Recreation Park South'){%>
+            <aside>
+            <img class="image" src="https://golfadvisor.brightspotcdn.com/dims4/default/d770341/2147483647/strip/true/crop/1440x929+0+14/resize/930x600!/quality/90/?url=https%3A%2F%2Fgolfadvisor.brightspotcdn.com%2Fcc%2Fe9%2F116b4e11990891387e6253c68158%2F91659.jpg">
+            </aside>
+            <%}%>
+            <%if(tournament.location == 'Trump National Golf Club'){%>
+            <aside>
+            <img class="image" src="https://www.top100golfcourses.com/img/courses/trump-national-los-angeles_f5506b53-422c-472a-9449-da3ac0d034f3.jpg">
+            </aside>
+            <%}%>
+            <%if(tournament.location == 'Monterey Park Golf Course'){%>
+            <aside>
+            <img class="image" src="https://cdn-img.teeoff.com/course/6104/6104-000220.jpg">
+            </aside>
+            <%}%>
+            <%if(tournament.location == 'Industry Hills Golf Club at Pacific Palms Resort - Eisenhower Course'){%>
+            <aside>
+            <img class="image" src="https://www.ihgolfclub.com/images/uploads/homepage/ike-hole2-top.jpg">
+            </aside>
+            <%}%>
+            <%if(tournament.location == 'Alhambra Municipal Golf Course'){%>
+            <aside>
+            <img class="image" src="https://www.scga.org/images/uploads/facilities/859/alhambra_golf_course__large.jpg">
+            </aside>
+            <%}%>
+            <%if(tournament.location == 'Westdrift Manhattan Beach Golf Club'){%>
+            <aside>
+            <img class="image" src="https://photos.wikimapia.org/p/00/03/52/70/29_big.jpg">
+            </aside>
+            <%}%>
+            <%if(tournament.location == 'Coyote Hills Golf Course'){%>
+            <aside>
+            <img class="image" src="https://www.coyotehillsgc.com/sites/default/files/coyotehills_01-movedflag-v2.jpg">
+            </aside>
+            <%}%>
             <section class="right-side">
                 <h3>Description</h3>
                 <ul>

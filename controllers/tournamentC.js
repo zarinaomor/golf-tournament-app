@@ -2,10 +2,11 @@ const express = require('express');
 const router = express.Router();
 const Tournament = require('../models/tournament');
 const User = require('../models/user');
+const GolfCourses = require('../models/clubs')
 
 router.get('/host', (req, res)=>{
 
-    if(req.session.logged==true){res.render('tournaments/host.ejs')}
+    if(req.session.logged==true){res.render('tournaments/host.ejs',{golfCourses: GolfCourses})}
     else{res.redirect('/auth/login')}
   });
 
@@ -21,7 +22,7 @@ router.get('/host', (req, res)=>{
         createdTournament.save()
         res.redirect(`/tour/${createdTournament._id}`)
         }
-        catch(err){res.send(err)}})
+        catch(err){res.redirect('tour/host')}})
 
   router.put('/:id/edit', (req, res) => {
     Tournament.findByIdAndUpdate(req.params.id, req.body, (err, updatedUser) => {
@@ -75,6 +76,7 @@ router.get('/cat/:cat', async (req, res)=>{
 router.get('/:id', (req, res)=>{
     Tournament.findById(req.params.id)
         .populate('host').exec((err,foundTournament)=>{
+            console.log(foundTournament)
             res.render('tournaments/show.ejs', {    
                 tournament: foundTournament,
                 name: foundTournament.host.firstName,
@@ -82,7 +84,6 @@ router.get('/:id', (req, res)=>{
                 userId: req.session.usersDbId
                 })}  
 )})
-
 
 router.delete('/:id', async (req, res)=>{
     try{const foundUser = await User.findById(req.session.usersDbId)
@@ -100,6 +101,23 @@ router.delete('/:id', async (req, res)=>{
     }
 
   });
+
+  router.delete('/:id/edit', (req, res)=> {
+    Tournament.findByIdAndRemove(req.params.id, (err, deletedTournament) => {
+      if(err){
+        res.send(err);
+      } else {
+        console.log(deletedTournament);
+        //Tour.deleteMany({
+        //  _id: {
+        //    $in: deletedUser.signedUp // array of article ids to delete
+        //  }
+        //}, (err, data) => {
+          res.redirect('/home');
+        }}
+    )
+    })
+
   
 
 

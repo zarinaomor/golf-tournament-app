@@ -44,7 +44,12 @@
                                     <input type="text" class="form-control" name="eventName" placeholder="" value=""/>
                                 </div>
                                 <div class="form-group">
-                                        <input type="text" class="form-control" name="golfCourse" placeholder="Select Golf Course *" value=""/>
+                                        <select name="golfCourse" class="form-control" placeholder="Select Golf Course *">
+                                        <option>Location</option>
+                                          <% for(let i =0; i < golfCourses.length; i++){%>
+                                            <option name="location" value="<%=golfCourses[i]%>"><%=golfCourses[i]%></option>
+                                          <%}%>
+                                         </select>
                                 </div>
                                 <div class="form-group">
                                         <input type="text" class="form-control" name="city" placeholder="City *" value=""/>
@@ -52,8 +57,9 @@
                                 <div class="form-group">
                                     <input type="datetime-local" class="form-control" name="eventDate" placeholder="Date *" value=""/>
                                 </div>
+                            
                                 <div class="form-group">
-                                    <input type="number" name="groupSize" class="form-control" placeholder="Field Size *" value="" min="1" max="8"/>
+                                    <input type="number" name="groupSize" class="form-control" placeholder="Group Size *" value="" min="2" max="8"/>
                                 </div>
                               <div class="form-group">  
                               <select name="category" class="form-control">
