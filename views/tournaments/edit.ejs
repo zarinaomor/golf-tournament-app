@@ -42,17 +42,26 @@
                             </div>
                             <div class="form-group col-md-12">
 
-                                <input type="text" class="form-control" id="inputLastName" name="location" placeholder="Location">
+                                <input type="text" class="form-control" id="inputLastName" name="city" placeholder="city">
                             </div>
                         </div>
                         <div class="form-row">
                                 <div class="form-group col-md-12">
-
-                                    <input type="date" class="form-control" id="inputemail" name="dateOfEvent" placeholder="Date">
+                                    <input type="date" class="form-control" id="inputemail" name="eventDate" placeholder="Date">
                                 </div>
-
                             </div>
                         <button type="submit" class="btn btn-primary">Save changes</button>
+                    </form>
+                    <br/>
+                    <form action="/tour/<%=tournament._id%>/notify" method="post">
+                            <div class="form-group col-md-12">
+                                <input type="text" class="form-control" id="inputFirstName" name="notifications" placeholder="Notifications">
+                                <br/>
+                                <button type="submit" class="btn btn-primary">Notify</button>
+                            </div>
+                    </form>
+                    <form action="/tour/<%=tournament._id%>/edit?_method=DELETE" method="post">
+                        <input class="btn btn-danger" type="submit" value="Delete"/>
                     </form>
 
                 </div>

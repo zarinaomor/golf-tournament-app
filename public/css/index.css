@@ -1,0 +1,7 @@
+.card {
+    text-align: left;
+}
+
+.card, .card-body {
+    width: 400px;
+}
