@@ -2,7 +2,7 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="/css/reed.css">
-  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <link rel="stylesheet" type="text/css" href="/css/index.css">
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">        
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -74,30 +74,34 @@
     <main>
       <ul>
         <% for(let i = 0; i < tournaments.length; i++){ %>
-            <div class="card text-center">
+            
+            <div class="card">
                 <div class="card-header">
                  <h2><a href="/tour/<%=tournaments[i]._id%>"><%=tournaments[i].eventName%></a></h2>
                 </div>
             <div class="card-body">
-                <h5>Date: <%=tournaments[i].DateOfEvent%></h5>
-                <a href= "#"> <h5 class="card-title">Golf Course:</h5></a>
-                <h6>City</h6>
-                
-                <p class="card-text"><%=tournaments[i].description%></p>
+                <h5>Date: <%=tournaments[i].eventDate.toUTCString()%></h5>
+                <h5>Golf Course: <%=tournaments[i].golfCourse%></h5>
+                <h6>City: <%=tournaments[i].city%></h6>
+                <a href="/tour/<%=tournaments[i]._id%>">more info</a>
 <%let m=0
 for (j=0;j<tournaments[i].players.length;j++){
     if(tournaments[i].players[j]== userProfile){
-        %>             <form action="/tour/<%=tournaments[i]._id%>?_method=DELETE" method="post">
+        %>  
+          <div class="index-reg">
+          <p>spots availble: <%=tournaments[i].groupSize - tournaments[i].players.length%></p>
+          <form action="/tour/<%=tournaments[i]._id%>?_method=DELETE" method="post">
               <input class="btn btn-danger" type="submit" value="Unregister"/>
-            </form><%
+            </form>
+          </div><%
         m=1
     }
-} if (m==0 && tournaments[i].fieldSize > tournaments[i].players.length){
+} if (m==0 && tournaments[i].groupSize > tournaments[i].players.length){
     %> <form action="/tour/<%=tournaments[i]._id%>?_method=PUT" method="post">
                 <input class="btn btn-success" type="submit" value="Sign Up"/>
             </form>            <%
 } else if (m==0){
-    %>            <form>
+    %>       <form>
                 <input class="btn btn-danger" type="submit" value="Full"/>
             </form><%
 }%>

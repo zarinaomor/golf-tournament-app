@@ -54,7 +54,7 @@ router.get('/host', (req, res)=>{
 
 
 router.get('/', async (req, res)=>{
-const foundTournaments = await Tournament.find({});
+const foundTournaments = await Tournament.find({eventDate: {$gt: req.session.userTimeStamp}}).sort({eventDate: 1});
 if (req.session.logged==true)try{
 res.render('tournaments/index.ejs', {
     tournaments: foundTournaments,
@@ -84,8 +84,6 @@ router.get('/:id', (req, res)=>{
                 userId: req.session.usersDbId
                 })}  
 )})
-
-
 
 router.delete('/:id', async (req, res)=>{
     try{const foundUser = await User.findById(req.session.usersDbId)
