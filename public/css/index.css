@@ -1,7 +1,19 @@
+#index-tour {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .card {
     text-align: left;
+    margin-left: 33px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .card, .card-body {
-    width: 400px;
+    width: 430px;
+}
+
+.top {
+    text-align: end;
 }
