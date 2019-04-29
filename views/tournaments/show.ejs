@@ -50,7 +50,7 @@
                         Date: <%=tournament.eventDate.toDateString()%>
                     </li>
                     <li>
-                        Estimated tee-time: <%=tournament.eventDate.getHours()%>:<%=tournament.eventDate.getMinutes()%>
+                        Estimated tee-time: <%=tournament.eventDate.getUTCHours()%>:<%=tournament.eventDate.getMinutes()%>
                     </li>
                     <li>
                         Max Field Size: <%=tournament.groupSize%>
