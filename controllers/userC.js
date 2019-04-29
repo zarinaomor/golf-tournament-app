@@ -40,8 +40,6 @@ router.get('/:id', (req, res) => {
     })
 })
 
-
-
 router.get('/:id/edit', (req, res) => {
     User.findById(req.params.id, (err, foundUser) => {
         res.render('user/edit.ejs', {
@@ -50,8 +48,6 @@ router.get('/:id/edit', (req, res) => {
     })
 })
 
-
-  
 
 router.put('/:id', (req, res) => {
     User.findByIdAndUpdate(req.params.id, req.body, (err, updatedUser) => {

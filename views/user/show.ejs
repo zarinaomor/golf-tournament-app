@@ -1,68 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="stylesheet" type="text/css" href="/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">        
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script></head>
-<nav class="navbar navbar-light" style="background-color: #f0f7da;">
-  <a class="navbar-brand mb-0 h1" href="/home">Par<i class="fas fa-golf-ball"></i>ees</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Profile</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Logout</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Contact Us</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
 <body>
-    <div class="container">
-        <header>
-            <h1 class="title">Welcome To Your Profile <%=user.firstName%>! </h1>
-            <div class="home-btn">
-                <button type="button" class="btn btn-primary btn-lg"> <a href="/home" style="color: white">Home</a></button>
-            </div>
-        </header>
-        <main>
-            <section class="left-side">
-                <h3>Registered Tournaments</h3>
-                <ul>
-                    <% for (let i = 0; i < user.signedUp.length; i++) {%>
-                        <li><a href="/tour/<%=user.signedUp[i]._id%>"><%=user.signedUp[i].eventName%></a></li>
-                    <% } %>
-                </ul>
-            </section>
-            <img class="image" src="https://www.atlantisbahamas.com/media/Things%20To%20Do/Activities/Golf/Hero/Golf%20course%20HERO_updated.jpg">
-            
-            <section class="right-side">
-                <h3>Hosted Tournaments</h3>
-                <ul>
-                    <% for (let i = 0; i < user.Hosted.length; i++) {%>
-                        <li><a href="/tour/<%=user.Hosted[i]._id%>"><%=user.Hosted[i].eventName%></a></li>
-                    <% } %>
-                </ul>
-            </section>
-        </main>
-        <footer>
-            <div class="edit-btn">
-                <button type="button" class="btn btn-primary btn-lg"><a href="/user/<%=user._id%>/edit" style="color: white;">Edit</a></button>
-            </div>
-              
-        </footer>
-    </div>
+        <nav class="navbar navbar-light" style="background-color: #f0f7da;">
+                <a class="navbar-brand mb-0 h1" href="/home">Par<i class="fas fa-golf-ball"></i>ees</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/auth/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Contact Us</a>
+                    </li>
+                  </ul>
+                </div>
+              </nav>
+       
+              <div class="container">
+                    <header>
+                        <h1 class="title">Welcome To Your Profile <%=user.firstName%>! </h1>
+                
+                    </header>
+                    <main>
+                        <section class="left-side">
+                            <h3>Registered Tournaments</h3>
+                            <ul>
+                                <% for (let i = 0; i < user.signedUp.length; i++) {%>
+                                    <li><a href="/tour/<%=user.signedUp[i]._id%>"><%=user.signedUp[i].eventName%></a></li>
+                                <% } %>
+                            </ul>
+                        </section>
+                        <!-- <img class="image" src="https://www.atlantisbahamas.com/media/Things%20To%20Do/Activities/Golf/Hero/Golf%20course%20HERO_updated.jpg"> -->
+                        
+                        <section class="right-side">
+                            <h3>Hosted Tournaments</h3>
+                            <ul>
+                                <% for (let i = 0; i < user.Hosted.length; i++) {%>
+                                    <li><a href="/tour/<%=user.Hosted[i]._id%>"><%=user.Hosted[i].eventName%></a></li>
+                                <% } %>
+                            </ul>
+                        </section>
+                    </main>
+                    <footer>
+                        <div class="edit-btn">
+                            <button type="button" class="btn btn-primary btn-lg"><a href="/user/<%=user._id%>/edit" style="color: white;">Edit</a></button>
+                        </div>
+                          
+                    </footer>
+                </div>   
 </body>
 </html>
