@@ -2,10 +2,11 @@ const express = require('express');
 const router = express.Router();
 const Tournament = require('../models/tournament');
 const User = require('../models/user');
+const GolfCourses = require('../models/clubs')
 
 router.get('/host', (req, res)=>{
 
-    if(req.session.logged==true){res.render('tournaments/host.ejs')}
+    if(req.session.logged==true){res.render('tournaments/host.ejs',{golfCourses: GolfCourses})}
     else{res.redirect('/auth/login')}
   });
 
@@ -14,8 +15,10 @@ router.get('/host', (req, res)=>{
         const createdTournament = await Tournament.create(req.body)
         const foundUser = await User.findById(req.session.usersDbId)
         foundUser.Hosted.push(createdTournament._id)
+        foundUser.signedUp.push(createdTournament._id)
         foundUser.save()
         createdTournament.host = foundUser._id
+        createdTournament.players = foundUser._id
         createdTournament.save()
         res.redirect(`/tour/${createdTournament._id}`)
         }
@@ -51,7 +54,7 @@ router.get('/host', (req, res)=>{
 
 
 router.get('/', async (req, res)=>{
-const foundTournaments = await Tournament.find({})
+const foundTournaments = await Tournament.find({});
 if (req.session.logged==true)try{
 res.render('tournaments/index.ejs', {
     tournaments: foundTournaments,
@@ -81,6 +84,8 @@ router.get('/:id', (req, res)=>{
                 userId: req.session.usersDbId
                 })}  
 )})
+
+
 
 router.delete('/:id', async (req, res)=>{
     try{const foundUser = await User.findById(req.session.usersDbId)

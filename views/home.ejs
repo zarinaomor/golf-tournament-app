@@ -7,6 +7,8 @@
         <link href="css/home.css" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     </head>
+    <div class="home-overlay">
+    </div>
     <body class="home-body">
         <div id="home-main">
             <div id="home-one">
@@ -18,14 +20,14 @@
                     <button id="home-start" type="submit">Get Started</button>
                 </form>
                 <div id="home-links">
-                    <a href="/tour">Tournaments</a>
-                    <a href="/tour/host">Host a Tournament</a>
+                    <a href="/tour">Upcoming Partees</a>
+                    <a href="/tour/host">Host a Partee</a>
                 </div>
             </div>
             <% if(session === true){ %>
             <div id="hello-user">
-                <h4>Hi <%= user.firstName %></h4>
-                <a href="/user/<%=user._id%>">Profile</a>
+                <h4>Hi <%= user.firstName %>,</h4>
+                <a href="/user/<%=user._id%>">View Profile</a>
                 <form action="/home/logout" method="POST">
                     <button id="home-logout" type="submit">Logout</button>
                 </form>

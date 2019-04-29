@@ -10,6 +10,7 @@
     font-size: 30px;
 }
 
+
 .form-content
 {
     padding: 5%;
@@ -92,16 +93,14 @@ body{
     margin-top:20px;
     background:#F0F8FF;
 }
-.container-left {
+.container-edit{
     width: 500px;
-    display: inline-block;
     border: 1px solid #007bff; 
     padding: 20px;
+    margin: auto;
 }
-.container-right {
-    width: 500px;
-    display: inline-block;
-    border: 1px solid #007bff; 
-    padding: 20px;
+.card-title {
+   
 }
+
 
