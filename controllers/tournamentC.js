@@ -53,7 +53,7 @@ router.get('/host', (req, res)=>{
 
 
 router.get('/', async (req, res)=>{
-const foundTournaments = await Tournament.find({})
+const foundTournaments = await Tournament.find({DateOfEvent: {$gt: req.session.userTimeStamp}});
 if (req.session.logged==true)try{
 res.render('tournaments/index.ejs', {
     tournaments: foundTournaments,

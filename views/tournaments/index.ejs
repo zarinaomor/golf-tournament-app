@@ -76,10 +76,13 @@
         <% for(let i = 0; i < tournaments.length; i++){ %>
             <div class="card text-center">
                 <div class="card-header">
-                 <a href="/tour/cat/<%=tournaments[i].category%>"><%=tournaments[i].category%></a>
+                 <h2><a href="/tour/<%=tournaments[i]._id%>"><%=tournaments[i].eventName%></a></h2>
                 </div>
             <div class="card-body">
-                <a href= "/tour/<%=tournaments[i]._id%>"> <h5 class="card-title"><%=tournaments[i].eventName%></h5></a>
+                <h5>Date: <%=tournaments[i].DateOfEvent%></h5>
+                <a href= "#"> <h5 class="card-title">Golf Course:</h5></a>
+                <h6>City</h6>
+                
                 <p class="card-text"><%=tournaments[i].description%></p>
 <%let m=0
 for (j=0;j<tournaments[i].players.length;j++){
