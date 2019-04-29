@@ -6,26 +6,22 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>  
-        <div class="container-right">
+        <div class="container-edit">
                 <div class="card-header">
                         
                     <h2 class="card-title mb-0">Edit Your Profile</h2>
-                    <div class="card-body">
-                            <form>
+                    <form action="/user/<%=user._id%>?_method=PUT" method="POST">
                                 <div class="row">
                                     <div class="col-md-8">
-                                        <div class="form-group">
-                                            <label for="inputUsername">Username</label>
-                                            <input type="text" class="form-control" id="inputUsername" placeholder="Username">
-                                        </div>
+                                        
                                         <div class="form-group">
                                             <label for="inputUsername">Biography</label>
-                                            <textarea rows="2" class="form-control" id="inputBio" placeholder="Tell something about yourself"></textarea>
+                                            <textarea rows="2" class="form-control" id="inputBio" value="<%-user.biography%>" placeholder="Tell something about yourself"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="text-center">
-                                            <img alt="Andrew Jones" src="https://bootdey.com/img/Content/avatar/avatar1.png" class="rounded-circle img-responsive mt-2" width="128" height="128">  
+                                            <img alt="#" src="https://bootdey.com/img/Content/avatar/avatar1.png" class="rounded-circle img-responsive mt-2" width="128" height="128">  
                                         </div>
                                     </div>
                                 </div>
@@ -33,21 +29,21 @@
     
                         </div>
                 <div class="card-body">
-                    <form>
+                        <form action="/user/<%=user._id%>?_method=PUT" method="POST">
                         <div class="form-row">
                             <div class="form-group col-md-12">
                                 <label for="inputFirstName">First name</label>
-                                <input type="text" class="form-control" id="inputFirstName" name="firstName" placeholder="First name">
+                                <input type="text" class="form-control" id="inputFirstName" name="firstName" placeholder="First name" value="<%-user.firstName%>">
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="inputLastName">Last name</label>
-                                <input type="text" class="form-control" id="inputLastName" name="lastName" placeholder="Last name">
+                                <input type="text" class="form-control" id="inputLastName" name="lastName" placeholder="Last name" value="<%-user.lastName%>">
                             </div>
                         </div>
                         <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <label for="inputemail">Email</label>
-                                    <input type="text" class="form-control" id="inputemail" name="email" placeholder="Email">
+                                    <input type="text" class="form-control" id="inputemail" name="email" placeholder="Email" value="<%-user.email%>">
                                 </div>
                                 <div class="form-group col-md-12">
                                     <label for="inputCity">City</label>
@@ -55,9 +51,15 @@
                                 </div>
                             </div>
                         <button type="submit" class="btn btn-primary">Save changes</button>
+                        <div class="delete-btn">
+                                <form action="/home/<%=user._id%>?_method=DELETE" method="POST">
+                                    <button type="submit" class="btn btn-primary">Delete Account</button>
+                                </form>
+                            </div>  
                     </form>
 
                 </div>
+           
             </div>
         </div> 
  
