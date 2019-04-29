@@ -9,6 +9,7 @@
     <div class="container">
         <header>
             <h1 class="title"><%=tournament.eventName%> </h1>
+
             <div class="home-btn">
                 <button type="button" class="btn btn-primary btn-lg"> <a href="/home" style="color: white">Home</a></button>
             </div>
@@ -24,7 +25,10 @@
                         Date: <%=tournament.DateOfEvent.getMonth()%>/<%=tournament.DateOfEvent.getDate()%>
                     </li>
                     <li>
-                        Field Size: <%=tournament.fieldSize%>
+                        Max Field Size: <%=tournament.fieldSize%>
+                    </li>
+                    <li>
+                        Current Players: <%=tournament.players.length%>
                     </li>
                     <li>
                          Category: <a href="/tour/cat/<%=tournament.category%>"><%=tournament.category%></a>
@@ -37,16 +41,51 @@
             <section class="right-side">
                 <h3>Description</h3>
                 <ul>
-                    <li>Host: <a href="/user/<%=tournament.host[0]._id%>"><%=name%> <%=last%></a></li>
+                    <li>Host: <a href="/user/<%=tournament.host._id%>"><%=name%> <%=last%></a></li>
                     <li><%=tournament.description%></li>
                 </ul>
             </section>
         </main>
         <footer> 
-        <form action="/tour/<%=tournament._id%>?_method=PUT" method="post">
+        <% if(tournament.fieldSize > tournament.players.length){ %>
+            <form action="/tour/<%=tournament._id%>?_method=PUT" method="post">
             <input class="btn btn-success" type="submit" value="Sign Up"/>
-        </form> 
+            </form> 
+            <br/> 
+            <% } else { %>
+            <form>
+                <input class="btn btn-danger" type="submit" value="Full"/>
+            </form> 
+            <br/>
+<%let m=0
+for (j=0;j<tournament.players.length;j++){
+    if(tournament.players[j]== userProfile){
+        %>             <form action="/tour/<%=tournament._id%>?_method=DELETE" method="post">
+              <input class="btn btn-danger" type="submit" value="Unregister"/>
+            </form><%
+        m=1
+    }
+} if (m==0 && tournament.fieldSize > tournament.players.length){
+    %> <form action="/tour/<%=tournament._id%>?_method=PUT" method="post">
+                <input class="btn btn-success" type="submit" value="Sign Up"/>
+            </form>            <%
+} else if (m==0){
+    %>            <form>
+                <input class="btn btn-danger" type="submit" value="Full"/>
+            </form><%
+}%> 
+            <br/> 
+            </div>    
+            <% } %>
         <br/> 
+        <%if(tournament.host==userId){%>
+        <form >
+                <input class="btn btn-success" href="/tour/<%=tournament._id%>/edit"type="submit" value="Edit"/>
+            </form>  <%}%>
+                                <%if(tournament.host._id==userId){%>            <div class="home-btn">
+                <button type="button" class="btn btn-primary btn-lg"> <a href="/tour/<%=tournament._id%>/edit" style="color: white">Edit</a></button>
+            </div>
+<br/><%}%>
         </footer>
     </div>
 </body>

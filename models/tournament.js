@@ -12,9 +12,9 @@ const tournamentSchema = new mongoose.Schema({
     players: [{
         type: mongoose.Schema.Types.ObjectId, ref: 'User'
     }],
-    host: [{
+    host: {
         type: mongoose.Schema.Types.ObjectId, ref: 'User'
-    }]
+    }
 })
 
 const Tournament = mongoose.model('Tournament', tournamentSchema);

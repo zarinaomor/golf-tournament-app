@@ -21,6 +21,7 @@ router.post('/', async (req, res) => {
         req.session.message = '';
         req.session.logged = true;
         req.session.usersDbId = newUser._id;
+        req.session.userTimeStamp = new Date();    
         res.redirect(`/user/${newUser._id}`);
 
     } catch(err){
@@ -49,22 +50,7 @@ router.get('/:id/edit', (req, res) => {
     })
 })
 
-router.delete('/:id', (req, res)=> {
-    User.findByIdAndRemove(req.params.id, (err, deletedUser) => {
-      if(err){
-        res.send(err);
-      } else {
-        console.log(deletedUser);
-        Tour.deleteMany({
-          _id: {
-            $in: deletedUser.signedUp // array of article ids to delete
-          }
-        }, (err, data) => {
-          res.redirect('/home');
-        })
-      }
-    })
-  })
+
   
 
 router.put('/:id', (req, res) => {
