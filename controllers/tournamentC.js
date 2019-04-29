@@ -22,7 +22,7 @@ router.get('/host', (req, res)=>{
         createdTournament.save()
         res.redirect(`/tour/${createdTournament._id}`)
         }
-        catch(err){res.send(err)}})
+        catch(err){res.redirect('tour/host')}})
 
   router.put('/:id/edit', (req, res) => {
     Tournament.findByIdAndUpdate(req.params.id, req.body, (err, updatedUser) => {
@@ -103,6 +103,22 @@ router.delete('/:id', async (req, res)=>{
     }
 
   });
+
+  router.delete('/:id/edit', (req, res)=> {
+    Tournament.findByIdAndRemove(req.params.id, (err, deletedTournament) => {
+      if(err){
+        res.send(err);
+      } else {
+        console.log(deletedTournament);
+        //Tour.deleteMany({
+        //  _id: {
+        //    $in: deletedUser.signedUp // array of article ids to delete
+        //  }
+        //}, (err, data) => {
+          res.redirect('/home');
+        }}
+    )
+    })
 
   
 
