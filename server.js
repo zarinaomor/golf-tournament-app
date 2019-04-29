@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const session = require("express-session");
+const $ = require("jquery");
 
 require("./db/db");
 
