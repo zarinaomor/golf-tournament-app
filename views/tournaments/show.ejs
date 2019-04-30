@@ -122,16 +122,9 @@
             </section>
         </main>
         <footer> 
-        <% if(tournament.groupSize > tournament.players.length){ %>
-            <form action="/tour/<%=tournament._id%>?_method=PUT" method="post">
-            <input class="btn btn-success" type="submit" value="Sign Up"/>
-            </form> 
-            <br/> 
+        <% if(tournament.groupSize > 1000){ %>
             <% } else { %>
-            <form>
-                <input class="btn btn-danger" type="submit" value="Full"/>
-            </form> 
-            <br/>
+
             <%let m=0
                 for (j=0;j<=tournament.players.length;j++){
                     if(tournament.players[j]== userProfile){m=1;
@@ -140,8 +133,8 @@
               <input class="btn btn-danger" type="submit" value="Unregister"/>
             </form><%
         
-    }
-} if (m==0 && tournament.groupSize > tournament.players.length){
+            }
+        } if (m==0 && tournament.groupSize > tournament.players.length){
     %> <form action="/tour/<%=tournament._id%>?_method=PUT" method="post">
                 <input class="btn btn-success" type="submit" value="Sign Up"/>
             </form>            <%

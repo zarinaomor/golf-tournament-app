@@ -82,6 +82,7 @@ router.get('/:id', (req, res)=>{
             console.log(req.session.usersDbId)
             res.render('tournaments/show.ejs', {   
                 userId: req.session.usersDbId, 
+                userProfile: req.session.usersDbId,
                 tournament: foundTournament,
                 name: foundTournament.host.firstName,
                 last: foundTournament.host.lastName,})})}else{res.redirect(`/home`)}})

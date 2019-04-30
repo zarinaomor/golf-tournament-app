@@ -38,11 +38,12 @@
 }
 
 .container {
-    background-color: rgb(101, 247, 101);
-    opacity: .7;
+    /*background-color: rgb(101, 247, 101);*/
+    /*opacity: .7;*/
 }
 
 /* user show.ejs */
+
 
 header {
    margin-bottom: 50px;
@@ -60,9 +61,11 @@ header {
     color: #007bff;
    font-weight: 700; 
    /*font-family: 'Courgette', cursive; */
-    border: 1px solid #007bff;  
+    border: none;
+
 }
 .title {
+    font-family: 'Fredericka the Great', cursive;
   margin-top: 30px;
    text-align: center; 
 } 
