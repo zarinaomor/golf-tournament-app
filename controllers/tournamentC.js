@@ -66,7 +66,7 @@ res.render('tournaments/index.ejs', {
 
 router.get('/cat/:cat', async (req, res)=>{
     const foundTournaments = await Tournament.find({category: req.params.cat})
-    if(req.session.id==true){try{
+    if(req.session.logged==true){try{
     res.render('tournaments/index.ejs', {
         tournaments: foundTournaments,
         userProfile: req.session.usersDbId
@@ -76,7 +76,7 @@ router.get('/cat/:cat', async (req, res)=>{
     })
 
 router.get('/:id', (req, res)=>{
-    if(req.session.id==true){Tournament.findById(req.params.id)
+    if(req.session.logged==true){Tournament.findById(req.params.id)
         .populate('host').exec((err,foundTournament)=>{
             console.log(foundTournament)
             console.log(req.session.usersDbId)
