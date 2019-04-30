@@ -25,36 +25,9 @@
                   </ul>
                 </div>
               </nav>
-       
-              <div class="container-show">
-                    <header>
-                        <h1 class="title">Welcome To Your Profile <%=user.firstName%>! </h1>
-                
-                    </header>
-                    <main>
-                        <section class="left-side">
-                            <h3>Registered Tournaments</h3>
-                            <ul>
-                                <% for (let i = 0; i < user.signedUp.length; i++) {%>
-                                    <li><a href="/tour/<%=user.signedUp[i]._id%>"><%=user.signedUp[i].eventName%></a></li>
-                                <% } %>
-                            </ul>
-                        </section> 
-                        <section class="right-side">
-                            <h3>Hosted Tournaments</h3>
-                            <ul>
-                                <% for (let i = 0; i < user.Hosted.length; i++) {%>
-                                    <li><a href="/tour/<%=user.Hosted[i]._id%>"><%=user.Hosted[i].eventName%></a></li>
-                                <% } %>
-                            </ul>
-                        </section>
-                    </main>
-                    <footer>
-                        <div class="edit-btn">
-                            <button type="button" class="btn btn-primary btn-lg"><a href="/user/<%=user._id%>/edit" style="color: white;">Edit</a></button>
-                        </div>
-                          
-                    </footer>
-                </div>   
+            
+                        
+            
+               
 </body>
 </html>
