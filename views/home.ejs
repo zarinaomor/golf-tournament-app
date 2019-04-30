@@ -6,46 +6,73 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="css/home.css" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great|Marck+Script" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.js"></script>
     </head>
     <div class="home-overlay">
+    <% for(let i = 0; i < 1; i++){ %>
+        <div class="home-scene">
+        <div class="cube">
+            <div class="cube-face front">front</div>
+            <div class="cube-face back">back</div>
+            <div class="cube-face right">right</div>
+            <div class="cube-face left">left</div>
+            <div class="cube-face top">top</div>
+            <div class="cube-face bottom">bottom</div>
+        </div>
+        </div>
+    <% } %>
     </div>
     <body class="home-body">
         <div id="home-main">
             <div id="home-one">
-                <h1>Par<i class="fas fa-golf-ball"></i>ees</h1>
+                <p>Par<i class="fas fa-golf-ball"></i>ees</p>
             </div>
             <div id="home-center">
-                <h4>Golf to support a cause / have some fun / improve your game</h4>
+                <div class="home-sentence">
+                <h1>Golf</h1>
+                <div class="sentence" id="one">to network</div><div class="sentence" id="two">to improve your game</div><div class="sentence" id="three">for fun</div>
+                </div>
                 <form action="/user/new">
                     <button id="home-start" type="submit">Get Started</button>
                 </form>
                 <div id="home-links">
-                    <a href="/tour">Upcoming Partees</a>
                     <a href="/tour/host">Host a Partee</a>
+                    <a href="/tour">Upcoming Partees</a>
                 </div>
             </div>
             <% if(session === true){ %>
             <div id="hello-user">
                 <h4>Hi <%= user.firstName %>,</h4>
-                <a href="/user/<%=user._id%>">View Profile</a>
+                <div class="options">
+                <a class="home-profile" href="/user/<%=user._id%>">View Profile</a>
                 <form action="/home/logout" method="POST">
                     <button id="home-logout" type="submit">Logout</button>
                 </form>
+                </div>
             </div>
             <% } else { %>
             <div id="home-login">
-                <i class="far fa-user"></i>
+                <h2 class="icon"><i class="far fa-user"></i></h2>
                 <form action="/home" method="POST">
                     <input type="text" name="email" placeholder="email">
                     <input type="password" name="password" placeholder="password">
-                    <button type="submit">Login</button><br/>
+                    <div class="buttons">
+                        <a href="/user/new">Sign Up</a><button class="login" type="submit">Login</button>
+                    </div>
                 </form>
-                <a href="/user/new">Sign Up</a>
             </div>    
             <% } %>
         </div>
-        <footer>
-        footer
-        </footer>
+     <script>
+        const cube = $(".cube")
+        cube.ready(()=>{
+            cube.toggleClass("show-left")
+            setTimeout(() => {
+                cube.removeClass("show-left")
+                cube.addClass("show-top")
+            }, 1000);
+        });
+    </script>
     </body>
 </html> 
