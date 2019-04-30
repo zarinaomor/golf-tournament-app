@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/tourShow.css">
     <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">        
@@ -124,25 +124,19 @@
             </section>
         </main>
         <footer> 
-        <% if(tournament.groupSize > tournament.players.length){ %>
-            <form action="/tour/<%=tournament._id%>?_method=PUT" method="post">
-            <input class="btn btn-success" type="submit" value="Sign Up"/>
-            </form> 
-            <br/> 
+        <% if(tournament.groupSize > 1000){ %>
             <% } else { %>
-            <form>
-                <input class="btn btn-danger" type="submit" value="Full"/>
-            </form> 
-            <br/>
-<%let m=0
-for (j=0;j<tournament.players.length;j++){
-    if(tournament.players[j]== userProfile){
-        %>             <form action="/tour/<%=tournament._id%>?_method=DELETE" method="post">
+
+            <%let m=0
+                for (j=0;j<=tournament.players.length;j++){
+                    if(tournament.players[j]== userProfile){m=1;
+            %>             
+            <form action="/tour/<%=tournament._id%>?_method=DELETE" method="post">
               <input class="btn btn-danger" type="submit" value="Unregister"/>
             </form><%
-        m=1
-    }
-} if (m==0 && tournament.groupSize > tournament.players.length){
+        
+            }
+        } if (m==0 && tournament.groupSize > tournament.players.length){
     %> <form action="/tour/<%=tournament._id%>?_method=PUT" method="post">
                 <input class="btn btn-success" type="submit" value="Sign Up"/>
             </form>            <%
