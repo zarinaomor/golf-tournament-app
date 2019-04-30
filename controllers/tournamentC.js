@@ -31,13 +31,13 @@ router.get('/host', (req, res)=>{
 });
 
   router.get('/:id/edit', (req, res) => {
-    Tournament.findById(req.params.id, (err, foundTournament) => {
+    if(req.session.logged==true){Tournament.findById(req.params.id, (err, foundTournament) => {
         res.render('tournaments/edit.ejs', {
             tournament: foundTournament
         })
         console.log(foundTournament.host)
         console.log(req.session.usersDbId)
-    })
+    })}else(res.redirect`/home`)
 })
 
   router.put('/:id', async (req, res)=>{
@@ -66,33 +66,32 @@ res.render('tournaments/index.ejs', {
 
 router.get('/cat/:cat', async (req, res)=>{
     const foundTournaments = await Tournament.find({category: req.params.cat})
-    try{
+    if(req.session.id==true){try{
     res.render('tournaments/index.ejs', {
         tournaments: foundTournaments,
         userProfile: req.session.usersDbId
-        });}catch(err){res.send(err)}
+        });}catch(err){res.send(err)}}else{
+            res.redirect(`/home`)
+        }
     })
 
 router.get('/:id', (req, res)=>{
-    Tournament.findById(req.params.id)
+    if(req.session.id==true){Tournament.findById(req.params.id)
         .populate('host').exec((err,foundTournament)=>{
             console.log(foundTournament)
-            res.render('tournaments/show.ejs', {    
+            console.log(req.session.usersDbId)
+            res.render('tournaments/show.ejs', {   
+                userId: req.session.usersDbId, 
                 tournament: foundTournament,
                 name: foundTournament.host.firstName,
-                last: foundTournament.host.lastName,
-                userId: req.session.usersDbId
-                })}  
-)})
+                last: foundTournament.host.lastName,})})}else{res.redirect(`/home`)}})
+                
+                
 
 router.delete('/:id', async (req, res)=>{
     try{const foundUser = await User.findById(req.session.usersDbId)
-    console.log('before deletion')
-    console.log(foundUser)
     foundUser.signedUp.remove(req.params.id)
     foundUser.save();
-    console.log('did it delete?')
-    console.log(foundUser)
     const foundTournament = await Tournament.findById(req.params.id)
     foundTournament.players.remove(req.session.usersDbId)
     foundTournament.save()
@@ -108,11 +107,6 @@ router.delete('/:id', async (req, res)=>{
         res.send(err);
       } else {
         console.log(deletedTournament);
-        //Tour.deleteMany({
-        //  _id: {
-        //    $in: deletedUser.signedUp // array of article ids to delete
-        //  }
-        //}, (err, data) => {
           res.redirect('/home');
         }}
     )

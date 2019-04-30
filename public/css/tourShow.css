@@ -58,7 +58,7 @@ header {
 .container {
     color: #007bff;
    font-weight: 700; 
-   font-family: 'Courgette', cursive; 
+   /*font-family: 'Courgette', cursive; */
     border: 1px solid #007bff;  
 }
 .title {
