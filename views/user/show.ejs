@@ -7,20 +7,21 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>    
 <body>
+    <div class="container-show">
         <nav class="navbar navbar-light" style="background-color: #f0f7da;">
-                <a class="navbar-brand mb-0 h1" href="/home">Par<i class="fas fa-golf-ball"></i>ees</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                  <ul class="navbar-nav">
+            <a class="navbar-brand mb-0 h1" href="/home">Par<i class="fas fa-golf-ball"></i>ees</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
                     <li class="nav-item active">
-                      <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                      <form action="/user/logout" method="POST">
+                    <form action="/user/logout" method="POST">
                         <button class="nav-logout" type="submit">Logout</button>
-                      </form>
+                    </form>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="#">Contact Us</a>
@@ -28,43 +29,34 @@
                   </ul>
                 </div>
               </nav>
-       
-              <div class="container-show">
-                    <header>
-                        <h1 class="title">Welcome To Your Profile <%=user.firstName%>! </h1>
-                
-                    </header>
-                    <main>
-                        <section class="left-side">
-                            <h3>Registered Tournaments</h3>
-                            <ul>
-                                <% for (let i = 0; i < user.signedUp.length; i++) {%>
-                                    <li><a href="/tour/<%=user.signedUp[i]._id%>"><%=user.signedUp[i].eventName%></a></li>
-                                <% } %>
-                            </ul>
-                        </section> 
-                        <section class="right-side">
-                            <h3>Hosted Tournaments</h3>
-                            <ul>
-                                <% for (let i = 0; i < user.Hosted.length; i++) {%>
-                                    <li><a href="/tour/<%=user.Hosted[i]._id%>"><%=user.Hosted[i].eventName%></a></li>
-                                <% } %>
-                            </ul>
-                        </section>
-                    </main>
-                    <footer>
-                        <div class="edit-btn">
-                            <button type="button" class="btn btn-primary btn-lg"><a href="/user/<%=user._id%>/edit" style="color: white;">Edit</a></button>
-                        </div>
-                          
-                    </footer>
-                </div>   
-<script> 
-  $(".navbar-toggler").click(()=>{
-    $(this).removeClass("collapsed");
-    $(this).attr("aria-expanded", "true");
-    $(".navbar-collapse").toggleClass("show");
-  });
-</script>
+            <div class="header">
+                <h1 class="swing-in-top-fwd">Welcome to your Profile</h1>
+                <h4><%=user.firstName%> <%=user.lastName%></h4>
+                <h5>About Me</h5>
+                <p><%=user.biography%></p>
+          
+            <div class="edit-btn">
+                <a href="/user/<%=user._id%>/edit">Edit</a>
+            </div>  
+        </div>            
+            <main>
+                <section class="left-side">
+                    <h3>Registered Tournaments</h3>
+                        <ul>
+                            <% for (let i = 0; i < user.signedUp.length; i++) {%>
+                                <li><a href="/tour/<%=user.signedUp[i]._id%>"><%=user.signedUp[i].eventName%></a></li>
+                            <% } %>
+                        </ul>
+                </section>
+                <section class="right-side">
+                    <h3>Hosted Tournaments</h3>
+                        <ul>
+                            <% for (let i = 0; i < user.Hosted.length; i++) {%>
+                                <li><a href="/tour/<%=user.Hosted[i]._id%>"><%=user.Hosted[i].eventName%></a></li>
+                            <% } %>
+                        </ul>
+                </section>
+            </main>
+    </div>
 </body>
 </html>
