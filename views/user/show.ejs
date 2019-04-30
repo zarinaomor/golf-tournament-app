@@ -4,8 +4,10 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="stylesheet" type="text/css" href="/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <body>
+        <div class="container-show">
         <nav class="navbar navbar-light" style="background-color: #f0f7da;">
                 <a class="navbar-brand mb-0 h1" href="/home">Par<i class="fas fa-golf-ball"></i>ees</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,12 +27,20 @@
                   </ul>
                 </div>
               </nav>
-              <div class="container">
-                    <header>
-                        <h1 class="title">Welcome To Your Profile <%=user.firstName%>! </h1>
+              
+              
+                           <div class="header">
+                                <h1 class="title">My Profile</h1>
+                                <h4><%=user.firstName%> <%=user.lastName%></h4>
+                                <h5>About Me</h5>
+                                 <p><%=user.biography%></p>
+                           </div>
+                           <div class="col-md-4 bg_blur">
+                                <a href="/user/<%=user._id%>/edit" class="follow_btn hidden-xs">Edit</a>
+                      
+                            </div>
                 
-                    </header>
-                    <main>
+                <main>
                         <section class="left-side">
                             <h3>Registered Tournaments</h3>
                             <ul>
@@ -39,27 +49,16 @@
                                 <% } %>
                             </ul>
                         </section>
-                        <img class="image" src="https://www.atlantisbahamas.com/media/Things%20To%20Do/Activities/Golf/Hero/Golf%20course%20HERO_updated.jpg">
-                        
                         <section class="right-side">
-                            <h3>Hosted Tournaments</h3>
-                            <ul>
-                                <% for (let i = 0; i < user.Hosted.length; i++) {%>
-                                    <li><a href="/tour/<%=user.Hosted[i]._id%>"><%=user.Hosted[i].eventName%></a></li>
-                                <% } %>
-                            </ul>
-                        </section>
-                    </main>
-                    <footer>
-                        <div class="edit-btn">
-                            <button type="button" class="btn btn-primary btn-lg"><a href="/user/<%=user._id%>/edit" style="color: white;">Edit</a></button>
+                                <h3>Hosted Tournaments</h3>
+                                <ul>
+                                    <% for (let i = 0; i < user.Hosted.length; i++) {%>
+                                        <li><a href="/tour/<%=user.Hosted[i]._id%>"><%=user.Hosted[i].eventName%></a></li>
+                                    <% } %>
+                                </ul>
+                            </section>
+                        </main>
                         </div>
-                          
-                    </footer>
-                </div>
-            
-                        
-            
                
 </body>
 </html>
