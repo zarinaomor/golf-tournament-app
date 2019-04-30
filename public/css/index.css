@@ -17,3 +17,16 @@
 .top {
     text-align: end;
 }
+#nav-host {
+    text-align: left;
+}
+.navbar-nav {
+	text-align: right;
+}
+
+.nav-logout {
+	border: 1px solid rgb(0, 128, 128);
+    color: rgb(0, 128, 128);
+    font-weight: bold;
+    border-radius: 12px;
+}

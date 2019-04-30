@@ -23,10 +23,15 @@
         <a class="nav-link top" href="#">Profile</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link top" href="#">Logout</a>
+        <a class="nav-link" href="/tour/host">Host a ParTee</a>
       </li>
       <li class="nav-item">
         <a class="nav-link top" href="#">Contact Us</a>
+      </li>
+      <li class="nav-item">
+        <form action="/tour/logout" method="POST">
+          <button class="nav-logout" type="submit">Logout</button>
+        </form>
       </li>
     </ul>
   </div>
@@ -35,10 +40,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="/tour/host">Host a ParTee</a>
-      </li>
+    <ul id="nav-host" class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" href="/user/<%=userProfile%>">Profile</a>
       </li>

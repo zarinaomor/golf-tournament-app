@@ -31,19 +31,21 @@
             <div id="home-center">
                 <div class="home-sentence">
                 <h1>Golf</h1>
-                <div class="sentence" id="one">to network</div><div class="sentence" id="two">to improve your game</div><div class="sentence" id="three">for fun</div>
+                <div class="sentence" id="one">to network</div>
+                <div class="sentence" id="two">to improve your game</div>
+                <div class="sentence" id="three">for fun</div>
                 </div>
                 <form action="/user/new">
                     <button id="home-start" type="submit">Get Started</button>
                 </form>
                 <div id="home-links">
-                    <a href="/tour/host">Host a Partee</a>
-                    <a href="/tour">Upcoming Partees</a>
+                    <a class="links" href="/tour/host">Host a Partee</a>
+                    <a class="links" href="/tour">Upcoming Partees</a>
                 </div>
             </div>
             <% if(session === true){ %>
             <div id="hello-user">
-                <h4>Hi <%= user.firstName %>,</h4>
+                <p>Hi <%= user.firstName %>,</p>
                 <div class="options">
                 <a class="home-profile" href="/user/<%=user._id%>">View Profile</a>
                 <form action="/home/logout" method="POST">
@@ -58,13 +60,30 @@
                     <input type="text" name="email" placeholder="email">
                     <input type="password" name="password" placeholder="password">
                     <div class="buttons">
-                        <a href="/user/new">Sign Up</a><button class="login" type="submit">Login</button>
+                        <a class="home-signup" href="/user/new">Sign Up</a><button class="login" type="submit">Login</button>
                     </div>
                 </form>
             </div>    
             <% } %>
         </div>
      <script>
+        $("#one").ready(()=>{
+            setInterval(() => {
+                setTimeout(() => {
+                    $("#one").css("display", "none");
+                    $("#two").css("display", "flex");
+                }, 1500);
+                setTimeout(() => {
+                    $("#two").css("display", "none");
+                    $("#three").css("display", "flex");                    
+                }, 3000);
+                setTimeout(() => {
+                    $("#three").css("display", "none");
+                    $("#one").css("display", "flex"); 
+                }, 4500);
+            }, 4500);
+        })
+        
         const cube = $(".cube")
         cube.ready(()=>{
             cube.toggleClass("show-left")

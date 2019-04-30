@@ -37,6 +37,10 @@ input, button {
     font-family: 'Fredericka the Great', cursive;
     font-size: 45px;
 }
+
+.links {
+    margin-bottom: 20px;
+}
 a{
     color: inherit;
 }
@@ -47,38 +51,70 @@ footer {
     height: 12%;
 }
 
-button {
-    width: 100px;
-    height: 25px;
-    border-radius: 15px; 
-}
+
 
 #home-center {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 120px;
+    padding-top: 100px;
 }
 
 #home-login, #hello-user {
     display: flex;
     flex-direction: column;
-    width: 180px;
-    height: 180px;
+    width: 200px;
+    height: 200px;
     box-shadow: 0 4px 8px 0 rgba(226, 218, 218, 0.493), 0 6px 20px 0 rgba(226, 218, 218, 0.493);
     padding-left: 5px;
     padding-right: 5px;
     background-color: rgba(0, 128, 128, 0.3);
 }
 
+#home-login {
+    padding: 10px;
+}
 #hello-user {
     padding: 25px;
     display: flex;
     justify-content: space-between;
+
+}
+
+p {
+    font-size: 25px;
+    font-family: 'Fredericka the Great', cursive;
+    color: white;
 }
 
 .home-profile {
     padding-right: 10px;
+    font-size: 18px;
+    color: white;
+}
+#home-logout, .login, #home-start {
+    border: 1px solid rgb(0, 128, 128);
+    color: rgb(0, 128, 128);
+    font-weight: bold;
+    border-radius: 12px;
+}
+
+#home-logout, .login {
+    font-size: 15px;
+}
+
+#home-start {
+    font-size: 24px; 
+    transition-duration: 0.4s;   
+}
+
+#home-start:hover {
+    color: white;
+    background-color: rgb(0, 128, 128)
+}
+
+.home-signup, h2 {
+    color: white;
 }
 a {
     text-decoration: none;
@@ -108,15 +144,20 @@ p {
     font-family: 'Fredericka the Great', cursive;
 }
 /* sentence */
+h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
 .sentence {
     border-bottom: 2px solid white;
-    font-size: 35px;
+    font-size: 40px;
     font-weight: bold;
     position: fixed;
 }
+
 .home-sentence {
     width: 330px;
-    height: 160px;
+    height: 170px;
 }
 #two {
     display: none;
