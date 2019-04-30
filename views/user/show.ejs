@@ -30,9 +30,9 @@
                 </div>
               </nav>
             <div class="header">
-                <h1 class="swing-in-top-fwd">Welcome to your Profile</h1>
-                <h4><%=user.firstName%> <%=user.lastName%></h4>
-                <h5>About Me</h5>
+                <h1 class="swing-in-top-fwd">Hi <%=user.firstName%></h1>
+                <h2>Welcome To Your Profile</h2>
+                <h3>About Me</h3>
                 <p><%=user.biography%></p>
           
             <div class="edit-btn">
@@ -41,7 +41,7 @@
         </div>            
             <main>
                 <section class="left-side">
-                    <h3>Registered Tournaments</h3>
+                    <h2><ul><li>Registered Tournaments</li></ul></h2>
                         <ul>
                             <% for (let i = 0; i < user.signedUp.length; i++) {%>
                                 <li><a href="/tour/<%=user.signedUp[i]._id%>"><%=user.signedUp[i].eventName%></a></li>
@@ -49,7 +49,7 @@
                         </ul>
                 </section>
                 <section class="right-side">
-                    <h3>Hosted Tournaments</h3>
+                    <h2><ul><li>Hosted Tournaments</li></ul></h2>
                         <ul>
                             <% for (let i = 0; i < user.Hosted.length; i++) {%>
                                 <li><a href="/tour/<%=user.Hosted[i]._id%>"><%=user.Hosted[i].eventName%></a></li>

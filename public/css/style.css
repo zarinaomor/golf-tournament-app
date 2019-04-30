@@ -196,14 +196,6 @@
     border-bottom : 2px solid rgba(97, 203, 255, 0.65);
 }
 
-body {
-font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-font-size: 14px;
-line-height: 1.42857143;
-color: #fff;
-background-color: #F1F1F1;
-}
-
 .header{
     color : white;
     margin-left:100px;
@@ -245,14 +237,17 @@ main {
     color: white;
     float: right;
     margin-top: 50px;
-
+    margin-right: 70px;
+}
+.right-side {
+    margin-top: 150px;
 }
 
 .container-show {
     background-image: url("https://cdn.pixabay.com/photo/2014/11/28/20/45/golf-549230_1280.jpg");
     background-size: cover;
     height: 700px;
-   
+    font-family: 'Tangerine', cursive;
 }
 
 .navbar-nav {
