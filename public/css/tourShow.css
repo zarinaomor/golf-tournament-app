@@ -4,11 +4,13 @@
    text-align: center;
    height: 80px;
    background-image: -webkit-linear-gradient(left, #0072ff, #007bff);
-   color:white;
+   color:#63db65;
    font-weight: bold;
    line-height: 80px;
    font-size: 30px;
 }
+
+
 
 
 .form-content
@@ -35,7 +37,9 @@
 
 }
 
-
+.container {
+    background-color: #82e784;
+}
 
 /* user show.ejs */
 
@@ -52,10 +56,10 @@ header {
     height: 300px;  
 }
 .container {
-   /* color: #007bff;
-   font-weight: 700; */
-   /* font-family: 'Courgette', cursive; */
-   /* border: 1px solid #007bff;  */
+    color: #007bff;
+   font-weight: 700; 
+   font-family: 'Courgette', cursive; 
+    border: 1px solid #007bff;  
 }
 .title {
   margin-top: 30px;
@@ -91,7 +95,7 @@ footer {
 
 body{
    /* margin-top:20px; */
-   background:#F0F8FF;
+   background: #63db65;
 }
 .container-edit{
    width: 500px;
