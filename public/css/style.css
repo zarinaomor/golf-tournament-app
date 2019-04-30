@@ -28,9 +28,12 @@
     padding: 1%;
     width: 20%;
     cursor: pointer;
-    background-image: -webkit-linear-gradient(left, #f79d00, #64f38c);
+    background-color: #f79d00;
     color: #fff;
     margin-left: 120px;
+}
+.btnSubmit:hover {
+    background-color: #64f38c;
 }
 
 
@@ -174,4 +177,14 @@ body{
     margin-left: 150px;
     padding: 50px;
 }
+.container-register-form {
+    background-image: url("http://www.office.xerox.com/business-resources/1280x800_wallpaper_golf1.jpg");
+    background-size: cover;
+    height: 700px;
+    
+}
 
+
+/* .container-register-form {
+    float: left;
+} */
