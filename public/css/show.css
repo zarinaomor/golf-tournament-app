@@ -2,7 +2,7 @@
 {
     text-align: center;
     height: 80px;
-    background-image: -webkit-linear-gradient(left, #f79d00, #64f38c);
+    background-image: -webkit-linear-gradient(left, #f79d00, rgb(0, 128, 128));
     color:white;
     font-weight: bold;
     line-height: 80px;
@@ -27,7 +27,7 @@
     padding: 1%;
     width: 20%;
     cursor: pointer;
-    background-image: -webkit-linear-gradient(left, #f79d00, #64f38c);
+    background-image: -webkit-linear-gradient(left, #f79d00, rgb(0, 128, 128));
     color: #fff;
     margin-left: 120px;
 }
@@ -80,7 +80,7 @@ body{
     background-color: #fff;
     border-color: #fff;
     text-align:center;
-    background-image: -webkit-linear-gradient(left, #f79d00, #64f38c);
+    background-image: -webkit-linear-gradient(left, #f79d00, rgb(0, 128, 128));
 }
 .panel-login>.panel-heading a{
     text-decoration: none;
@@ -132,7 +132,7 @@ body{
     padding: 14px 0;
     text-transform: uppercase;
     border-color: #59B2E6;
-    background-image: -webkit-linear-gradient(left, #f79d00, #64f38c);
+    background-image: -webkit-linear-gradient(left, #f79d00, rgb(0, 128, 128));
 }
 .btn-login:hover,
 .btn-login:focus {

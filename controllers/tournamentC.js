@@ -4,6 +4,39 @@ const Tournament = require('../models/tournament');
 const User = require('../models/user');
 const GolfCourses = require('../models/clubs')
 
+router.post("/host/logout", (req, res)=>{
+  // res.send("logged out")
+  req.session.destroy((err)=>{
+    if(err){
+      res.send(err)
+    } else {
+      res.redirect("/home")
+    }
+  })
+})
+
+router.post("/logout", (req, res)=>{
+  // res.send("logged out")
+  req.session.destroy((err)=>{
+    if(err){
+      res.send(err)
+    } else {
+      res.redirect("/home")
+    }
+  })
+})
+
+router.post("/:id/logout", (req, res)=>{
+  // res.send("logged out")
+  req.session.destroy((err)=>{
+    if(err){
+      res.send(err)
+    } else {
+      res.redirect("/home")
+    }
+  })
+})
+
 router.get('/host', (req, res)=>{
 
     if(req.session.logged==true){res.render('tournaments/host.ejs',{golfCourses: GolfCourses})}
