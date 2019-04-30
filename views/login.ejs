@@ -105,9 +105,13 @@ $('#login-form-link').removeClass('active');
 $(this).addClass('active');
 e.preventDefault();
 });
-
 });
 
+  $(".navbar-toggler").click(()=>{
+    $(this).removeClass("collapsed");
+    $(this).attr("aria-expanded", "true");
+    $(".navbar-collapse").toggleClass("show");
+  });
   </script>
 
 

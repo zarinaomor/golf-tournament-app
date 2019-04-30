@@ -56,5 +56,12 @@
                           
                     </footer>
                 </div>   
+<script> 
+  $(".navbar-toggler").click(()=>{
+    $(this).removeClass("collapsed");
+    $(this).attr("aria-expanded", "true");
+    $(".navbar-collapse").toggleClass("show");
+  });
+</script>
 </body>
 </html>
