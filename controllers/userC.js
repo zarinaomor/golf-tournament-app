@@ -3,6 +3,17 @@ const router = express.Router();
 const User = require('../models/user');
 const Tour = require('../models/tournament');
 
+router.post("/logout", (req, res)=>{
+    // res.send("logged out")
+    req.session.destroy((err)=>{
+      if(err){
+        res.send(err)
+      } else {
+        res.redirect("/home")
+      }
+    })
+  })
+  
 router.get('/new', (req,res) => {
     User.find({}, (err, allUsers) => {
             if(err) {
