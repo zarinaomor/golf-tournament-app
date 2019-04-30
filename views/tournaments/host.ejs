@@ -18,8 +18,11 @@
         <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Profile</a>
+        <a class="nav-link" href="/user/<%=userId%>">Profile</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/tour">Upcoming ParTees</a>
+      </li>      
       <li class="nav-item">
         <form action="/tour/host/logout" method="POST">
           <button class="nav-logout" type="submit">Logout</button>

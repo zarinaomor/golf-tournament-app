@@ -4,6 +4,7 @@ const Tournament = require('../models/tournament');
 const User = require('../models/user');
 const GolfCourses = require('../models/clubs')
 
+
 router.post("/host/logout", (req, res)=>{
   // res.send("logged out")
   req.session.destroy((err)=>{
@@ -16,6 +17,17 @@ router.post("/host/logout", (req, res)=>{
 })
 
 router.post("/logout", (req, res)=>{
+  // res.send("logged out")
+  req.session.destroy((err)=>{
+    if(err){
+      res.send(err)
+    } else {
+      res.redirect("/home")
+    }
+  })
+})
+
+router.post("/:id/edit/logout", (req, res)=>{
   // res.send("logged out")
   req.session.destroy((err)=>{
     if(err){
@@ -39,7 +51,7 @@ router.post("/:id/logout", (req, res)=>{
 
 router.get('/host', (req, res)=>{
 
-    if(req.session.logged==true){res.render('tournaments/host.ejs',{golfCourses: GolfCourses})}
+    if(req.session.logged==true){res.render('tournaments/host.ejs',{userId: req.session.usersDbId, golfCourses: GolfCourses})}
     else{res.redirect('/auth/login')}
   });
 
@@ -66,7 +78,8 @@ router.get('/host', (req, res)=>{
   router.get('/:id/edit', (req, res) => {
     if(req.session.logged==true){Tournament.findById(req.params.id, (err, foundTournament) => {
         res.render('tournaments/edit.ejs', {
-            tournament: foundTournament
+            tournament: foundTournament,
+            userId: req.session.usersDbId
         })
         console.log(foundTournament.host)
         console.log(req.session.usersDbId)
@@ -115,7 +128,6 @@ router.get('/:id', (req, res)=>{
             console.log(req.session.usersDbId)
             res.render('tournaments/show.ejs', {   
                 userId: req.session.usersDbId, 
-                userProfile: req.session.usersDbId,
                 tournament: foundTournament,
                 name: foundTournament.host.firstName,
                 last: foundTournament.host.lastName,})})}else{res.redirect(`/home`)}})

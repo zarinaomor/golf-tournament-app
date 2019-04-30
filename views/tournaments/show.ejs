@@ -19,7 +19,13 @@
         <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Profile</a>
+        <a class="nav-link" href="/user/<%=userId%>">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/tour/host">Host a ParTee</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/tour">Upcoming ParTees</a>
       </li>
       <li class="nav-item">
         <form action="/tour/tourname._id/logout" method="POST">
@@ -68,11 +74,6 @@
             <%if(tournament.golfCourse == 'The Links at Terranea'){%>
             <aside>
             <img class="image" src="https://img.grouponcdn.com/deal/cH2Z5WaUXj33KD5UFUtP/Pw-700x420/v1/c700x420.jpg">
-            </aside>
-            <%}%>
-            <%if(tournament.golfCourse == 'Eighteen Hole at Van Nuys Golf Course'){%>
-            <aside>
-            <img class="image" src="https://golfadvisor.brightspotcdn.com/dims4/default/5379b42/2147483647/strip/true/crop/640x360+0+10/resize/590x332!/format/jpg/quality/90/?url=https%3A%2F%2Fgolfadvisor.brightspotcdn.com%2F31%2F67%2F83064bc75c68efe3633b2ebeaeee%2F91373.jpg">
             </aside>
             <%}%>
             <%if(tournament.golfCourse == 'Black Gold Golf Club'){%>
@@ -129,7 +130,7 @@
 
             <%let m=0
                 for (j=0;j<=tournament.players.length;j++){
-                    if(tournament.players[j]== userProfile){m=1;
+                    if(tournament.players[j]== userId){m=1;
             %>             
             <form action="/tour/<%=tournament._id%>?_method=DELETE" method="post">
               <input class="btn btn-danger" type="submit" value="Unregister"/>
