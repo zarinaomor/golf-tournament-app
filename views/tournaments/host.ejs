@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">        
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="/js/host.js" defer></script>
 </head>
 <nav class="navbar navbar-light" style="background-color: #f0f7da;">
   <a class="navbar-brand mb-0 h1" href="/home">Par<i class="fas fa-golf-ball"></i>ees</a>
@@ -49,24 +50,18 @@
                                     <input type="text" class="form-control" name="eventName" placeholder="" value=""/>
                                 </div>
                                 <div class="form-group">
-                                        <form action="/tour/host" method="get">
-                                        <input list='golfCourses' name="golfCourse">
+                                  <form action="/tour/host" method="get">
+                                        <input class="form-control course" list='golfCourses' name="golfCourse" placeholder="Golf Course">
                                         <datalist id="golfCourses">
                                           <% for(let i = 0; i < golfCourses.length; i++){ %>
                                           <option value="<%=golfCourses[i].name%>">
                                           <% } %>
                                         </datalist>
-                                        </form>
+                                  </form>
                                         
-                                        <select name="golfCourse" class="form-control" placeholder="Select Golf Course *">
-                                        <option>Location</option>
-                                          <% for(let i =0; i < golfCourses.length; i++){%>
-                                            <option name="location" value="<%=golfCourses[i]%>"><%=golfCourses[i]%></option>
-                                          <%}%>
-                                         </select>
                                 </div>
                                 <div class="form-group">
-                                        <input type="text" class="form-control" name="city" placeholder="City *" value=""/>
+                                        <input type="text" class="form-control city-input" name="city" placeholder="City *" value=""/>
                                 </div>
                                 <div class="form-group">
                                     <input type="datetime-local" class="form-control" name="eventDate" placeholder="Date *" value=""/>
@@ -95,12 +90,6 @@
                     </form>
                 </div>
         </div> 
-<script> 
-  $(".navbar-toggler").click(()=>{
-    $(this).removeClass("collapsed");
-    $(this).attr("aria-expanded", "true");
-    $(".navbar-collapse").toggleClass("show");
-  });
-</script>
+
 </body>
 </html>
