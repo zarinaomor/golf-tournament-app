@@ -40,12 +40,15 @@
     height: 100px;
     border:2px solid #03b1ce;
 }
-.tital{ font-size:16px; font-weight:500;}
-.bot-border{ border-bottom:1px #f8f8f8 solid;  margin:5px 0  5px 0}
+.tital{
+     font-size:16px; font-weight:500;
+}
+.bot-border{ 
+    border-bottom:1px #f8f8f8 solid;  margin:5px 0  5px 0
+}
 .edit-btn {
     margin-top: 120px;
 }
-
 /* user edit page */
 
 .container-edit{
@@ -143,7 +146,6 @@
 	text-decoration: underline;
 	color: #666;
 }
-
 .btn-register {
     background-image: -webkit-linear-gradient(left, #f79d00, rgb(0, 128, 128));
 	outline: none;
@@ -161,7 +163,6 @@
 	background-color: #1CA347;
 	border-color: #1CA347;
 }
-
 #login-form-link {
     margin-left: 150px;
     padding: 50px;
@@ -171,10 +172,7 @@
     background-size: cover;
     height: 700px; 
 }
-
 /* user show page */
-
-
 .well {
     margin-top:-20px;
     background-color:#007FBD;
@@ -185,7 +183,6 @@
     padding: 15px;
     border-radius: 0px !important;
 }
-
 .well:hover {
     margin-top:-20px;
     background-color:#0077B2;
@@ -197,13 +194,11 @@
     border-radius: 0px !important;
     border-bottom : 2px solid rgba(97, 203, 255, 0.65);
 }
-
 .header{
     color : white;
     margin-left:100px;
     margin-top:70px;
-    display: inline-block;
-   
+    display: inline-block;  
 }
 .picture{
     height:150px;
@@ -212,27 +207,23 @@
     top: 75px;
     left:-75px;
 }
-
 .picture_mob{
     position: absolute;
     width: 35%;
     left: 35%;
     bottom: 70%;
 }
-
 .btn-style{
     color: #fff;
     background-color: #007FBE;
     border-color: #adadad;
     width: 33.3%;
 }
-
 .btn-style:hover {
     color: white;
     background-color: #3D5DE0;
     border-color: #adadad;
-    width: 33.3%;
-   
+    width: 33.3%; 
 }
 main {
     display: inline-block;
@@ -244,7 +235,6 @@ main {
 .right-side {
     margin-top: 150px;
 }
-
 .container-show {
     background-image: url("https://cdn.pixabay.com/photo/2014/11/28/20/45/golf-549230_1280.jpg");
     background-size: cover;
@@ -257,7 +247,6 @@ main {
 .navbar-nav {
 	text-align: right;
 }
-
 .nav-logout {
 	border: 1px solid rgb(0, 128, 128);
     color: rgb(0, 128, 128);
@@ -303,5 +292,5 @@ main {
               transform-origin: top;
       opacity: 1;
     }
-  }
+}
   
