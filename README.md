@@ -5,8 +5,7 @@ Created by: Zarina Omor, Reed MacDonald, & Kaitlin Park
 We created ParTee with the intention of bringing users together through a common interest... golf! Once a user registers with us they are able to host and join groups to network, improve their game, or to just find a buddy to play a round with.
 
 ### Wireframes and Team Brainstorm
-![App Blueprint]
-(https://raw.githubusercontent.com/parkaitlin/golf-tournament-app/master/wireframes/Image%20from%20iOS.jpg)
+![App Blueprint](https://raw.githubusercontent.com/parkaitlin/golf-tournament-app/master/wireframes/Image%20from%20iOS.jpg)
 
 The Home view page serves as the first page the user encounters and the foundation for all of other pages.
 
