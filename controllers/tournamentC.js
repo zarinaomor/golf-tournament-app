@@ -122,15 +122,21 @@ router.get('/cat/:cat', async (req, res)=>{
     })
 
 router.get('/:id', (req, res)=>{
-    if(req.session.logged==true){Tournament.findById(req.params.id)
-        .populate('host').populate('players').exec((err,foundTournament)=>{
-            console.log(foundTournament)
-            console.log(req.session.usersDbId)
-            res.render('tournaments/show.ejs', {   
-                userId: req.session.usersDbId, 
-                tournament: foundTournament,
-                name: foundTournament.host.firstName,
-                last: foundTournament.host.lastName,})})}else{res.redirect(`/home`)}})
+  if(req.session.logged === true){
+    Tournament.findById(req.params.id)
+    .populate('host')
+    .populate('players')
+    .exec((err,foundTournament)=>{
+      console.log(foundTournament)
+      console.log(req.session.usersDbId)
+      res.render('tournaments/show.ejs', {   
+        userId: req.session.usersDbId, 
+        tournament: foundTournament,
+        name: foundTournament.host.firstName,
+        last: foundTournament.host.lastName
+})})} else {
+  res.redirect("/home")
+}})
                 
                 
 
