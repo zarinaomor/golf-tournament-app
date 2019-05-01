@@ -1,36 +1,3 @@
-/* new.ejs */
-.note
-{
-    text-align: center;
-    height: 80px;
-    background-image: -webkit-linear-gradient(left, #f79d00, rgb(0, 128, 128));
-    color:white;
-    font-weight: bold;
-    line-height: 80px;
-    font-size: 30px;
-}
-.form-content
-{
-    padding: 5%;
-    margin-bottom: 2%;  
-}
-.form-control{
-    border-radius:1.5rem;
-}
-.btnSubmit
-{
-    border:none;
-    border-radius:1.5rem;
-    padding: 1%;
-    width: 20%;
-    cursor: pointer;
-    background-color: #f79d00;
-    color: #fff;
-    margin-left: 120px;
-}
-.btnSubmit:hover {
-    background-color: #64f38c;
-}
 
 /* user show page  */
 
@@ -57,7 +24,7 @@
     padding: 20px;
     margin: auto;
 }
-/* login.ejs */
+
 .container-login {
     background-image: url("http://www.office.xerox.com/business-resources/1280x800_wallpaper_golf1.jpg");
     background-size: cover;
@@ -236,7 +203,7 @@ main {
     margin-top: 150px;
 }
 .container-show {
-    background-image: url("https://cdn.pixabay.com/photo/2014/11/28/20/45/golf-549230_1280.jpg");
+    background-image: url("https://www.leadernewsroom.com/wp-content/uploads/2017/04/golf.jpg");
     background-size: cover;
     height: 700px;
     font-family: 'Fredericka the Great', cursive;
