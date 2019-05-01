@@ -237,3 +237,7 @@ li {
     list-style: none;
 }
 
+.players{
+    list-style-type: upper-roman;
+}
+

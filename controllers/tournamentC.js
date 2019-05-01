@@ -133,7 +133,8 @@ router.get('/:id', (req, res)=>{
         userId: req.session.usersDbId, 
         tournament: foundTournament,
         name: foundTournament.host.firstName,
-        last: foundTournament.host.lastName
+        last: foundTournament.host.lastName,
+        golfCourses: GolfCourses
 })})} else {
   res.redirect("/home")
 }})
