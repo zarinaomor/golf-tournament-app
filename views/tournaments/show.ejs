@@ -5,6 +5,8 @@
     <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">        
+    <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great|Marck+Script" rel="stylesheet">    
+    <link href="https://fonts.googleapis.com/css?family=Poppins|Vidaloka" rel="stylesheet">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
@@ -46,20 +48,27 @@
         <main>
             <section class="left-side">
                 <h3>ParTee Details</h3>
-                <ul>
-                    <li>
-                        Golf Course : <%=tournament.golfCourse%>
+                <ul class="details">
+                    <li class="detail">
+                        Golf Course: <%=tournament.golfCourse%>
                     </li>
-                    <li>
+                    <li class="detail">
+                        <% for(let i = 0; i < golfCourses.length; i++){ %>
+                          <% if(tournament.golfCourse === golfCourses[i].name){ %>
+                              Address: <%=golfCourses[i].address%><br/><%=`${golfCourses[i].city} ${golfCourses[i].state} ${golfCourses[i].postal}`%>
+                          <% } %>
+                        <% } %>
+                    </li>
+                    <li class="detail">
                         Date: <%=tournament.eventDate.toDateString()%>
                     </li>
-                    <li>
-                        Estimated tee-time: <%=tournament.eventDate.getUTCHours()%>:<%=tournament.eventDate.getMinutes()%>
+                    <li class="detail"> 
+                        Estimated tee-time: <%=tournament.eventDate.getUTCHours()%>:<%=tournament.eventDate.getMinutes()%>0
                     </li>
-                    <li>
+                    <li class="detail">
                         Max Field Size: <%=tournament.groupSize%>
                     </li>
-                    <li>
+                    <li class="detail">
                         Current Players: <%=tournament.players.length%>
                         <div class="player-grid">
                         <% for(let i = 0; i < tournament.players.length; i++){ %>
@@ -69,8 +78,8 @@
                           <% } %>
                         </div>
                     </li>
-                    <li>
-                         Category: <a href="/tour/cat/<%=tournament.category%>"><%=tournament.category%></a>
+                    <li class="detail">
+                         Category: <a class="cat" href="/tour/cat/<%=tournament.category%>"><%=tournament.category%></a>
                     </li>
                 </ul>
             </section>
@@ -83,9 +92,9 @@
             <% } %>
             <section class="right-side">
                 <h3>Description</h3>
-                <ul>
-                    <li>Host:<%=name%> <%=last%></a></li>
-                    <li><%=tournament.description%></li>
+                <ul class="details">
+                    <li class="detail">Host: <%=name%> <%=last%></a></li>
+                    <li class="detail"><%=tournament.description%></li>
                 </ul>
             </section>
         </main>

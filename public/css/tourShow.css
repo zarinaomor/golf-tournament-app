@@ -10,7 +10,10 @@
    font-size: 30px;
 }
 
-
+h3 {
+    border-bottom: 1px solid #c2ddfa;
+    font-weight: bold; 
+}
 
 
 .form-content
@@ -49,7 +52,7 @@ header {
    margin-bottom: 50px;
 }
 .image {
-   border: 3px #007bff solid;
+   border: 3px #c2ddfa solid;
    border-radius: 10px;
    display: inline-block;
    width: 45%;
@@ -59,14 +62,12 @@ header {
 }
 .container {
     color: #c2ddfa;
-   font-weight: 700; 
-   /*font-family: 'Courgette', cursive; */
     border: none;
 
 }
 .title {
     font-family: 'Fredericka the Great', cursive;
-  margin-top: 30px;
+    margin-top: 30px;
    text-align: center; 
 } 
 .home-btn {
@@ -77,11 +78,13 @@ header {
    display: inline-block;
    width: 200px;
    float: left;
+   font-family: 'Poppins', sans-serif;
 }
 .right-side {
    display: inline-block;
    width: 200px;
-   float: right;  
+   float: right;
+   font-family: 'Poppins', sans-serif;  
 }
 footer {
   clear: both;
@@ -241,3 +244,15 @@ li {
     list-style-type: upper-roman;
 }
 
+a.navbar-brand {
+    font-family: 'Fredericka the Great', cursive;
+}
+
+.details {
+    padding: 0;
+    margin: 0;
+}
+
+.detail {
+    margin: 0 0 10px 0;
+}

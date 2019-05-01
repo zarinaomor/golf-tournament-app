@@ -52,7 +52,7 @@ router.post("/:id/logout", (req, res)=>{
 router.get('/host', (req, res)=>{
 
     if(req.session.logged==true){res.render('tournaments/host.ejs',{userId: req.session.usersDbId, golfCourses: GolfCourses})}
-    else{res.redirect('/auth/login')}
+    else{res.redirect('/user/new')}
   });
 
   router.post('/', async (req, res)=>{
@@ -97,8 +97,6 @@ router.get('/host', (req, res)=>{
 })
 
 
-
-
 router.get('/', async (req, res)=>{
 const foundTournaments = await Tournament.find({})
 if (req.session.logged==true)try{
@@ -106,7 +104,7 @@ res.render('tournaments/index.ejs', {
     tournaments: foundTournaments,
     userProfile: req.session.usersDbId
     });}catch(err){res.send(err)}else {
-        res.redirect('/auth/login')
+        res.redirect('/user/new')
     }
 })
 
