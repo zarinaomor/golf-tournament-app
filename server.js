@@ -35,3 +35,4 @@ app.use("/auth", authRouter);
 app.listen(PORT, err=>{
     console.log(err || `listening on ${process.env.PORT}`)
 })
+

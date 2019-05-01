@@ -10,65 +10,62 @@ router.post('/login', async (req, res) => {
       if(foundUser){
         console.log(foundUser.validPassword(req.body.password))
         if(foundUser.validPassword(req.body.password)){
-          console.log("valid password")
-          req.session.message = '';
-          req.session.logged = true;
-          req.session.usersDbId = foundUser._id;
-          req.session.userTimeStamp = new Date();
-          console.log(req.session, ' successful in login')
-          res.redirect('/home');
-  
+            console.log("valid password")
+            req.session.message = '';
+            req.session.logged = true;
+            req.session.usersDbId = foundUser._id;
+            req.session.userTimeStamp = new Date();
+            console.log(req.session, ' successful in login')
+            res.redirect('/home');
         } else {
-          req.session.message = "Username or password is incorrect";
-          res.redirect('user/new.ejs');
+            req.session.message = "Username or password is incorrect";
+            res.redirect('user/new.ejs');
         }
-  
-      } else { 
-        res.redirect('/home');
-      }
-  
-  
-    } catch(err){
-      res.send(err);
-    }})
+        } else { 
+            res.redirect('/home');
+        }
+        } catch(err){
+            res.send(err);
+        }
+    });
 
-    router.post('/register', async (req, res) => {
-        try {
-          const createdUser = await User.create(req.body);
-          req.session.message = '';
-          req.session.logged = true;
-          req.session.usersDbId = createdUser._id;
-          req.session.userTimeStamp = new Date();    
-          console.log(createdUser)
-          res.redirect(`/user/${createdUser._id}`);
-        
-          } catch(err){
-            res.send(err)
-          }
-        });
+router.post('/register', async (req, res) => {
+    try {
+        const createdUser = await User.create(req.body);
+        req.session.message = '';
+        req.session.logged = true;
+        req.session.usersDbId = createdUser._id;
+        req.session.userTimeStamp = new Date();    
+        console.log(createdUser)
+        res.redirect(`/user/${createdUser._id}`);
+
+    } catch(err){
+        res.send(err)
+    }
+});
 
 router.post("/logout", (req, res)=>{
     // res.send("logged out")
     req.session.destroy((err)=>{
-      if(err){
+        if(err){
         res.send(err)
-      } else {
+    } else {
         res.redirect("/home")
-      }
+        }
     })
-  })
+})
   
 router.get('/new', (req,res) => {
     User.find({}, (err, allUsers) => {
-            if(err) {
-                res.send(err);
-            } else {
-                res.render('user/new.ejs', {
-                    user: allUsers
-                });
-            }
-        });
-    })
+        if(err) {
+            res.send(err);
+        } else {
+            res.render('user/new.ejs', {
+                user: allUsers
+            });
+        }
+    });
+});
 
 router.post('/', async (req, res) => {
     try {
@@ -78,7 +75,6 @@ router.post('/', async (req, res) => {
         req.session.usersDbId = newUser._id;
         req.session.userTimeStamp = new Date();    
         res.redirect(`/user/${newUser._id}`);
-
     } catch(err){
         res.send(err)
     }

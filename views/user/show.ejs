@@ -16,58 +16,53 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                    <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="/tour/host">Host a ParTee</a>
+                        <a class="nav-link" href="/tour/host">Host a ParTee</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="/tour">Upcoming ParTees</a>
+                        <a class="nav-link" href="/tour">Upcoming ParTees</a>
                     </li>
                     <li class="nav-item">
-                      <form action="/user/logout" method="POST">
+                    <form action="/user/logout" method="POST">
                         <button class="nav-logout" type="submit">Logout</button>
                     </form>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#">Contact Us</a>
+                        <a class="nav-link" href="#">Contact Us</a>
                     </li>
-                  </ul>
-                </div>
-              </nav>
+                </ul>
+            </div>
+        </nav>
             <div class="header">
                 <h1 class="swing-in-top-fwd">Hi <%=user.firstName%></h1>
                 <h2>Welcome To Your Profile</h2>
                 <h2><%=user.city%></h2>
                 <h3>About Me</h3>
-                <p><%=user.biography%></p>
-          
-            <div class="edit-btn">
-                <a href="/user/<%=user._id%>/edit">Edit</a>
-            </div>  
-        </div>            
+                <p><%=user.biography%></p>     
+                <div class="edit-btn">
+                    <a href="/user/<%=user._id%>/edit">Edit</a>
+                </div>  
+            </div>            
         <main>
-                <section class="left-side">
-                    <h2><ul><li>Registered Tournaments</li></ul></h2>
-                        <ul>
-                            <% for (let i = 0; i < user.signedUp.length; i++) {%>
-                                <li><a href="/tour/<%=user.signedUp[i]._id%>"><%=user.signedUp[i].eventName%></a></li>
-                            <% } %>
-                        </ul>
-                </section>
-                <section class="right-side">
-                    <h2><ul><li>Hosted Tournaments</li></ul></h2>
-                        <ul>
-                            <% for (let i = 0; i < user.Hosted.length; i++) {%>
-                                <li><a href="/tour/<%=user.Hosted[i]._id%>"><%=user.Hosted[i].eventName%></a></li>
-                            <% } %>
-                        </ul>
-                </section>
-            </main>
-
-
-
-
+            <section class="left-side">
+                <h2><ul><li>Registered Tournaments</li></ul></h2>
+                    <ul>
+                        <% for (let i = 0; i < user.signedUp.length; i++) {%>
+                            <li><a href="/tour/<%=user.signedUp[i]._id%>"><%=user.signedUp[i].eventName%></a></li>
+                        <% } %>
+                    </ul>
+            </section>
+            <section class="right-side">
+                <h2><ul><li>Hosted Tournaments</li></ul></h2>
+                    <ul>
+                        <% for (let i = 0; i < user.Hosted.length; i++) {%>
+                            <li><a href="/tour/<%=user.Hosted[i]._id%>"><%=user.Hosted[i].eventName%></a></li>
+                        <% } %>
+                    </ul>
+            </section>
+        </main>
     </div>
 </body>
 </html>
