@@ -218,8 +218,10 @@ body{
    padding: 50px;
 }
 body{
-background-image: url("/img/remi-muller-326005-unsplash.jpg");}
-
+background-image: url("/img/remi-muller-326005-unsplash.jpg");
+background-position: center;
+background-size: cover;
+}
 .navbar-nav {
 	text-align: right;
 }
@@ -229,4 +231,8 @@ background-image: url("/img/remi-muller-326005-unsplash.jpg");}
     color: rgb(0, 128, 128);
     font-weight: bold;
     border-radius: 12px;
+}
+
+li {
+    list-style: none;
 }
