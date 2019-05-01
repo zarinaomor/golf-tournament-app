@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-
 const golfCourses = [
     {
         name: "Brea Golf Course",
@@ -193,6 +192,7 @@ const golfCourses = [
         dressCode: "No tank tops for men, gym shorts, open-toed shoes, or swimwear",
         greenFee: "$48",
         weekendRate: "$60",
+        img: "https://img.grouponcdn.com/deal/cH2Z5WaUXj33KD5UFUtP/Pw-700x420/v1/c700x420.jpg"
     }, 
     {
         name: 'Black Gold Golf Club',
@@ -205,6 +205,7 @@ const golfCourses = [
         dressCode: "No cut offs, tee-shirts, jeans or metal spikes",
         greenFee: "$73 - $95",
         weekendRate: "$83 - 125",
+        img: "https://blackgoldgolf.com/golf/proto/blackgoldgolf/images/course_photo.jpg"
     },
     {
         name: 'Recreation Park South',
@@ -217,6 +218,7 @@ const golfCourses = [
         dressCode: "n/a",
         greenFee: "$8.25 - $17",
         weekendRate: "$10.25 - $20.50",
+        img: "https://golfadvisor.brightspotcdn.com/dims4/default/d770341/2147483647/strip/true/crop/1440x929+0+14/resize/930x600!/quality/90/?url=https%3A%2F%2Fgolfadvisor.brightspotcdn.com%2Fcc%2Fe9%2F116b4e11990891387e6253c68158%2F91659.jpg"
     },
     {
         name: 'Monterey Park Golf Course',
@@ -229,6 +231,7 @@ const golfCourses = [
         dressCode: "",
         greenFee: "$7 - $12",
         weekendRate: "$7 - $12",
+        img: "https://cdn-img.teeoff.com/course/6104/6104-000220.jpg"
     },
     {
         name: 'Trump National Golf Club',
@@ -241,6 +244,7 @@ const golfCourses = [
         dressCode: "Collared shirts only, no denim materials of any type.",
         greenFee: "Contact club for Green Fees",
         weekendRate: "Contact club for Green Fees",
+        img: "https://www.top100golfcourses.com/img/courses/trump-national-los-angeles_f5506b53-422c-472a-9449-da3ac0d034f3.jpg"
     },
     {
         name: 'Industry Hills Golf Club at Pacific Palms Resort - Eisenhower Course',
@@ -253,6 +257,7 @@ const golfCourses = [
         dressCode: "n/a",
         greenFee: "$39 - 85",
         weekendRate: "$44 - $110",
+        img:"https://www.ihgolfclub.com/images/uploads/homepage/ike-hole2-top.jpg"
     },
     {
         name: 'Alhambra Municipal Golf Course',
@@ -265,6 +270,7 @@ const golfCourses = [
         dressCode: "Collared shirts are recommended; t-shirts are permitted. Please NO tank tops, bare feet or swimwear.",
         greenFee: "$28",
         weekendRate: "$36",
+        img: "https://www.scga.org/images/uploads/facilities/859/alhambra_golf_course__large.jpg"
     },
     {
         name: 'Westdrift Manhattan Beach Golf Club',
@@ -277,18 +283,20 @@ const golfCourses = [
         dressCode: "",
         greenFee: "$27",
         weekendRate: "$27",
+        img: "https://photos.wikimapia.org/p/00/03/52/70/29_big.jpg"
     },
     {
         name: 'Coyote Hills Golf Course',    
-    //     address: "",
-    //     city: "",
-    //     state: "CA",
-    //     postal: ,
-    //     phone: "",
-    //     holes: ,
-    //     dressCode: "",
-    //     greenFee: "",
-    //     weekendRate: "",
+        address: "1440 E Bastanchury Rd.",
+        city: "Fullerton",
+        state: "CA",
+        postal: 92835,
+        phone: "(714) 672-6800",
+        holes: 18,
+        dressCode: "n/a",
+        greenFee: "$30 - $75",
+        weekendRate: "$35 - $95",
+        img: "https://www.coyotehillsgc.com/sites/default/files/coyotehills_01-movedflag-v2.jpg"
     }
     ]
 
