@@ -52,7 +52,7 @@
                 <h3>Details</h3>
                 <ul>
                     <li>
-                        Location : <%=tournament.golfCourse%>
+                        Golf Course : <%=tournament.golfCourse%>
                     </li>
                     <li>
                         Date: <%=tournament.eventDate.toDateString()%>
@@ -65,6 +65,12 @@
                     </li>
                     <li>
                         Current Players: <%=tournament.players.length%>
+                        <div class="player-grid">
+                        <% for(let i = 0; i < tournament.players.length; i++){ %>
+                          <div>
+                          <h6><%=tournament.players[i].firstName%></h6>
+                          </div>
+                        </div>
                     </li>
                     <li>
                          Category: <a href="/tour/cat/<%=tournament.category%>"><%=tournament.category%></a>
