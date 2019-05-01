@@ -58,7 +58,7 @@ header {
     height: 300px;  
 }
 .container {
-    color: #007bff;
+    color: #c2ddfa;
    font-weight: 700; 
    /*font-family: 'Courgette', cursive; */
     border: none;
@@ -236,3 +236,4 @@ background-size: cover;
 li {
     list-style: none;
 }
+
