@@ -31,8 +31,11 @@ app.use("/tour", tourRouter);
 app.use("/home", homeRouter);
 app.use("/auth", authRouter);
 
+app.get("/", (req,res)=>{
+    res.redirect("/home")
+})
 
-app.listen(PORT, err=>{
+app.listen(process.env.PORT, err=>{
     console.log(err || `listening on ${process.env.PORT}`)
 })
 
