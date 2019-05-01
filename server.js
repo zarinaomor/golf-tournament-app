@@ -1,8 +1,10 @@
 const express = require("express");
 const app = express();
+const PORT = process.env.PORT
 const session = require("express-session");
 const $ = require("jquery");
 
+require('dotenv').config();
 require("./db/db");
 
 const bodyParser = require('body-parser');
@@ -30,6 +32,6 @@ app.use("/home", homeRouter);
 app.use("/auth", authRouter);
 
 
-app.listen(3000, err=>{
-    console.log(err || "listening on 3000")
+app.listen(PORT, err=>{
+    console.log(err || `listening on ${process.env.PORT}`)
 })

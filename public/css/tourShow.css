@@ -220,3 +220,13 @@ body{
 body{
 background-image: url("/img/remi-muller-326005-unsplash.jpg");}
 
+.navbar-nav {
+	text-align: right;
+}
+
+.nav-logout {
+	border: 1px solid rgb(0, 128, 128);
+    color: rgb(0, 128, 128);
+    font-weight: bold;
+    border-radius: 12px;
+}
