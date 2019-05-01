@@ -58,7 +58,7 @@ header {
     height: 300px;  
 }
 .container {
-    color: #007bff;
+    color: #c2ddfa;
    font-weight: 700; 
    /*font-family: 'Courgette', cursive; */
     border: none;
@@ -219,3 +219,4 @@ body{
 }
 body{
 background-image: url("/img/remi-muller-326005-unsplash.jpg");}
+
