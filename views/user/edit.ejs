@@ -17,14 +17,8 @@
                                             <textarea rows="2" class="form-control" id="inputBio" name="biography" placeholder="Tell something about yourself"><%=user.biography%></textarea>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="text-center">
-                                            <img alt="#" src="https://bootdey.com/img/Content/avatar/avatar1.png" class="rounded-circle img-responsive mt-2" width="128" height="128">  
-                                        </div>
-                                    </div>
+                                    
                                 </div>
-                            
-    
                         </div>
                 <div class="card-body">
             
@@ -48,18 +42,17 @@
                                     <input type="text" class="form-control" id="inputCity" name="city" placeholder="City">
                                 </div>
                             </div>
-                        
+                     
                             <button type="submit" class="btn btn-primary" style="display: inline">Save changes</button>
+                            <button type="submit" class="btn btn-primary" style="display: inline">Cancel</button>
                         </form>
                         <div class="delete-btn">
                             <form action="/user/<%=user._id%>?_method=DELETE" method="POST">
                                 <button type="submit" class="btn btn-primary" style="display: inline">Delete Account</button>
                             </form>
                         </div> 
-                        <form action="/home">
-                            <button type="button" href="/user/<%=user._id%>" class="btn btn-primary" style="display: inline">Cancel</button>
-                        </form>   
-                    </form>
+ 
+                  
                         
 
                 </div>
