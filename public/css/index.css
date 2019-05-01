@@ -12,6 +12,7 @@
 
 .card, .card-body {
     width: 430px;
+    font-family: 'Poppins', sans-serif;  
 }
 
 .top {
@@ -29,4 +30,12 @@
     color: rgb(0, 128, 128);
     font-weight: bold;
     border-radius: 12px;
+}
+
+a.navbar-brand, header {
+    font-family: 'Fredericka the Great', cursive;
+}
+
+.nav-link {
+    font-family: 'Fredericka the Great', cursive;
 }

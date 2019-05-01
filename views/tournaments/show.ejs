@@ -5,6 +5,8 @@
     <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">        
+    <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great|Marck+Script" rel="stylesheet">    
+    <link href="https://fonts.googleapis.com/css?family=Poppins|Vidaloka" rel="stylesheet">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
@@ -42,92 +44,57 @@
     <div class="container">
         <header>
             <h1 class="title"><%=tournament.eventName%> </h1>
-
-            <div class="home-btn">
-                <button type="button" class="btn btn-primary btn-lg"> <a href="/home" style="color: white">Home</a></button>
-            </div>
         </header>
         <main>
             <section class="left-side">
-                <h3>Details</h3>
-                <ul>
-                    <li>
-                        Golf Course : <%=tournament.golfCourse%>
+                <h3>ParTee Details</h3>
+                <ul class="details">
+                    <li class="detail">
+                        Golf Course: <%=tournament.golfCourse%>
                     </li>
-                    <li>
+                    <li class="detail">
+                        <% for(let i = 0; i < golfCourses.length; i++){ %>
+                          <% if(tournament.golfCourse === golfCourses[i].name){ %>
+                              Address: <%=golfCourses[i].address%><br/><%=`${golfCourses[i].city} ${golfCourses[i].state} ${golfCourses[i].postal}`%>
+                          <% } %>
+                        <% } %>
+                    </li>
+                    <li class="detail">
                         Date: <%=tournament.eventDate.toDateString()%>
                     </li>
-                    <li>
-                        Estimated tee-time: <%=tournament.eventDate.getUTCHours()%>:<%=tournament.eventDate.getMinutes()%>
+                    <li class="detail"> 
+                        Estimated tee-time: <%=tournament.eventDate.getUTCHours()%>:<%=tournament.eventDate.getMinutes()%>0
                     </li>
-                    <li>
+                    <li class="detail">
                         Max Field Size: <%=tournament.groupSize%>
                     </li>
-                    <li>
+                    <li class="detail">
                         Current Players: <%=tournament.players.length%>
                         <div class="player-grid">
                         <% for(let i = 0; i < tournament.players.length; i++){ %>
-                          <div>
-                          <h6><%=tournament.players[i].firstName%></h6>
-                          </div>
+                          <ul>
+                          <li class="players"><%=tournament.players[i].firstName%></li>
+                          </ul>
                           <% } %>
                         </div>
                     </li>
-                    <li>
-                         Category: <a href="/tour/cat/<%=tournament.category%>"><%=tournament.category%></a>
+                    <li class="detail">
+                         Category: <a class="cat" href="/tour/cat/<%=tournament.category%>"><%=tournament.category%></a>
                     </li>
                 </ul>
             </section>
-            <%if(tournament.golfCourse == 'The Links at Terranea'){%>
-            <aside>
-            <img class="image" src="https://img.grouponcdn.com/deal/cH2Z5WaUXj33KD5UFUtP/Pw-700x420/v1/c700x420.jpg">
-            </aside>
-            <%}%>
-            <%if(tournament.golfCourse == 'Black Gold Golf Club'){%>
-            <aside>
-            <img class="image" src="https://blackgoldgolf.com/golf/proto/blackgoldgolf/images/course_photo.jpg">
-            </aside>
-            <%}%>
-            <%if(tournament.golfCourse == 'Recreation Park South'){%>
-            <aside>
-            <img class="image" src="https://golfadvisor.brightspotcdn.com/dims4/default/d770341/2147483647/strip/true/crop/1440x929+0+14/resize/930x600!/quality/90/?url=https%3A%2F%2Fgolfadvisor.brightspotcdn.com%2Fcc%2Fe9%2F116b4e11990891387e6253c68158%2F91659.jpg">
-            </aside>
-            <%}%>
-            <%if(tournament.golfCourse == 'Trump National Golf Club'){%>
-            <aside>
-            <img class="image" src="https://www.top100golfcourses.com/img/courses/trump-national-los-angeles_f5506b53-422c-472a-9449-da3ac0d034f3.jpg">
-            </aside>
-            <%}%>
-            <%if(tournament.golfCourse == 'Monterey Park Golf Course'){%>
-            <aside>
-            <img class="image" src="https://cdn-img.teeoff.com/course/6104/6104-000220.jpg">
-            </aside>
-            <%}%>
-            <%if(tournament.golfCourse == 'Industry Hills Golf Club at Pacific Palms Resort - Eisenhower Course'){%>
-            <aside>
-            <img class="image" src="https://www.ihgolfclub.com/images/uploads/homepage/ike-hole2-top.jpg">
-            </aside>
-            <%}%>
-            <%if(tournament.golfCourse == 'Alhambra Municipal Golf Course'){%>
-            <aside>
-            <img class="image" src="https://www.scga.org/images/uploads/facilities/859/alhambra_golf_course__large.jpg">
-            </aside>
-            <%}%>
-            <%if(tournament.golfCourse == 'Westdrift Manhattan Beach Golf Club'){%>
-            <aside>
-            <img class="image" src="https://photos.wikimapia.org/p/00/03/52/70/29_big.jpg">
-            </aside>
-            <%}%>
-            <%if(tournament.golfCourse == 'Coyote Hills Golf Course'){%>
-            <aside>
-            <img class="image" src="https://www.coyotehillsgc.com/sites/default/files/coyotehills_01-movedflag-v2.jpg">
-            </aside>
-            <%}%>
+            <% for(let i = 0; i < golfCourses.length; i++){ %>
+              <% if(tournament.golfCourse === golfCourses[i].name){ %>
+                <aside>
+                  <img class="image" src=<%=golfCourses[i].img%>>
+                </aside>
+              <% } %> 
+            <% } %>
             <section class="right-side">
                 <h3>Description</h3>
-                <ul>
-                    <li>Host:<%=name%> <%=last%></a></li>
-                    <li><%=tournament.description%></li>
+                <ul class="details">
+                    <li class="detail">Host: <%=name%> <%=last%></a></li>
+                    <li class="detail"><%=tournament.description%></li>
                 </ul>
             </section>
         </main>

@@ -14,33 +14,30 @@ router.get("/", async(req, res)=>{
     }
 })
 
-router.post('/', async (req, res) => {
-    try {
-      const foundUser = await User.findOne({'email': req.body.email});
-      console.log(foundUser)
-      if(foundUser){
-        if(foundUser.validPassword(req.body.password)){
-          req.session.message = '';
-          req.session.logged = true;
-          req.session.usersDbId = foundUser._id;
-          req.session.userTimeStamp = new Date();    
-          console.log(req.session, ' successful in login')
-          res.redirect(`/user/${foundUser._id}`);
-  
-        } else {
-          req.session.message = "email or password is incorrect";
-          console.log(req.session);
-          res.redirect('/home');
-        }
-  
-      } else { 
-        res.redirect('/home');
+router.post('/login', async (req, res) => {
+  try {
+    const foundUser = await User.findOne({'email': req.body.email});
+    console.log(foundUser)
+    if(foundUser){
+      if(foundUser.validPassword(req.body.password)){
+        req.session.message = '';
+        req.session.logged = true;
+        req.session.usersDbId = foundUser._id;
+        req.session.userTimeStamp = new Date();    
+        console.log(req.session, ' successful in login')
+        res.redirect(`/user/${foundUser._id}`);
+      } else {
+        req.session.message = "email or password is incorrect";
+        console.log(req.session);
+        res.redirect('/user/new');
       }
-  
-  
+    } else {
+      res.redirect("/user/new");
+    }
     } catch(err){
       res.send(err);
-    }})
+    }
+  })
 
 router.post("/logout", (req, res)=>{
   // res.send("logged out")

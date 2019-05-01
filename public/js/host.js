@@ -313,7 +313,7 @@ const golfCourses = [
         console.log($(".course").val())
         console.log(golfCourses[i].name)
       if($(".course").val() === golfCourses[i].name){
-        $(".city-input").val(`${golfCourses[i].city}, ${golfCourses[i].state}`)
+        $(".city-input").val(`${golfCourses[i].city} ${golfCourses[i].state}`)
       }
     }
   });

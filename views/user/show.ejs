@@ -3,6 +3,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="stylesheet" type="text/css" href="/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great|Marck+Script" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins|Vidaloka" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>    
@@ -47,22 +48,29 @@
             </div>            
         <main>
             <section class="left-side">
-                <h2><ul><li>Registered Tournaments</li></ul></h2>
+                <h2><ul><li class='user-list list-title'>Registered ParTees</li></ul></h2>
                     <ul>
                         <% for (let i = 0; i < user.signedUp.length; i++) {%>
-                            <li><a href="/tour/<%=user.signedUp[i]._id%>"><%=user.signedUp[i].eventName%></a></li>
+                            <li class='user-list'><a class='list-items'href="/tour/<%=user.signedUp[i]._id%>"><%=user.signedUp[i].eventName%></a></li>
                         <% } %>
                     </ul>
             </section>
             <section class="right-side">
-                <h2><ul><li>Hosted Tournaments</li></ul></h2>
+                <h2><ul><li class='user-list list-title'>Hosted ParTees</li></ul></h2>
                     <ul>
                         <% for (let i = 0; i < user.Hosted.length; i++) {%>
-                            <li><a href="/tour/<%=user.Hosted[i]._id%>"><%=user.Hosted[i].eventName%></a></li>
+                            <li class='user-list'><a class='list-items' href="/tour/<%=user.Hosted[i]._id%>"><%=user.Hosted[i].eventName%></a></li>
                         <% } %>
                     </ul>
             </section>
         </main>
     </div>
+<script> 
+  $(".navbar-toggler").click(()=>{
+    $(this).removeClass("collapsed");
+    $(this).attr("aria-expanded", "true");
+    $(".navbar-collapse").toggleClass("show");
+  });
+</script>
 </body>
 </html>

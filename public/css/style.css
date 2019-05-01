@@ -132,6 +132,16 @@
 #login-form-link {
     margin-left: 150px;
     padding: 50px;
+    color: #cccccc;
+}
+#register-form-link{
+    color: #cccccc;
+}
+#login-form-link:focus,
+#login-form-link:hover,
+#register-form-link:focus,
+#register-form-link:hover {
+    color: white
 }
 .container-register-form {
     background-image: url("http://www.office.xerox.com/business-resources/1280x800_wallpaper_golf1.jpg");
@@ -223,4 +233,48 @@ main {
 .edit-btn a {
    color: white;
     font-size: 30px;
+}
+
+.note, a.navbar-brand {
+    font-family: 'Fredericka the Great', cursive;
+}
+
+.note {
+    font-size: 40px;
+}
+
+.btnSubmit {
+    background-color: rgba(0, 128, 128, 0.7);
+    font-family: 'Fredericka the Great', cursive;
+    border-radius: 12px;
+    font-size: 25px;
+    transition-delay: 0.1s; 
+    color: white;
+}
+
+.btnSubmit:hover {
+    background-color: rgba(0, 128, 128, 1);
+
+}
+
+.nav-link {
+    font-family: 'Fredericka the Great', cursive;
+}
+
+.left-side, .right-side {
+    font-family: 'Poppins', sans-serif;  
+}
+.user-list{
+    list-style: none;
+}
+.list-title {
+    border-bottom: 1px solid white;
+}
+
+.list-items {
+    color: #c2ddfa;
+}
+
+.list-items:hover {
+    color: #fff;
 }
