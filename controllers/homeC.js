@@ -37,7 +37,7 @@ router.post('/login', async (req, res) => {
     } catch(err){
       res.send(err);
     }
-  })
+})
 
 router.post("/logout", (req, res)=>{
   // res.send("logged out")

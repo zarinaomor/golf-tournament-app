@@ -21,14 +21,14 @@ router.post('/register', async (req, res) => {
     }
   });
 
-  router.post('/login', async (req, res) => {
-    try {
-      const foundUser = await User.findOne({'email': req.body.email});
-      console.log(foundUser)
+router.post('/login', async (req, res) => {
+  try {
+    const foundUser = await User.findOne({'email': req.body.email});
+    console.log(foundUser)
       if(foundUser){
-        console.log(foundUser.validPassword(req.body.password))
+      console.log(foundUser.validPassword(req.body.password))
         if(foundUser.validPassword(req.body.password)){
-          console.log("valid password")
+        console.log("valid password")
           req.session.message = '';
           req.session.logged = true;
           req.session.usersDbId = foundUser._id;
@@ -44,10 +44,11 @@ router.post('/register', async (req, res) => {
       } else { 
         res.redirect('/auth/login');
       }
-  
-  
+
     } catch(err){
       res.send(err);
-    }})
+  }
+})
+
 
 module.exports=router;

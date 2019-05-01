@@ -18,11 +18,11 @@ router.post("/host/logout", (req, res)=>{
 
 router.post("/logout", (req, res)=>{
   // res.send("logged out")
-  req.session.destroy((err)=>{
+    req.session.destroy((err)=>{
     if(err){
-      res.send(err)
+        res.send(err)
     } else {
-      res.redirect("/home")
+        res.redirect("/home")
     }
   })
 })
@@ -31,16 +31,16 @@ router.post("/:id/edit/logout", (req, res)=>{
   // res.send("logged out")
   req.session.destroy((err)=>{
     if(err){
-      res.send(err)
+        res.send(err)
     } else {
-      res.redirect("/home")
+        res.redirect("/home")
     }
   })
 })
 
 router.post("/:id/logout", (req, res)=>{
   // res.send("logged out")
-  req.session.destroy((err)=>{
+req.session.destroy((err)=>{
     if(err){
       res.send(err)
     } else {
@@ -50,12 +50,12 @@ router.post("/:id/logout", (req, res)=>{
 })
 
 router.get('/host', (req, res)=>{
+    if(req.session.logged==true)
+    {res.render('tournaments/host.ejs',{userId: req.session.usersDbId, golfCourses: GolfCourses})
+    }   else{res.redirect('/user/new')}    
+});
 
-    if(req.session.logged==true){res.render('tournaments/host.ejs',{userId: req.session.usersDbId, golfCourses: GolfCourses})}
-    else{res.redirect('/user/new')}
-  });
-
-  router.post('/', async (req, res)=>{
+router.post('/', async (req, res)=>{
     try {
         const createdTournament = await Tournament.create(req.body)
         const foundUser = await User.findById(req.session.usersDbId)
@@ -67,7 +67,7 @@ router.get('/host', (req, res)=>{
         createdTournament.save()
         res.redirect(`/tour/${createdTournament._id}`)
         }
-        catch(err){res.redirect('tour/host')}})
+    catch(err){res.redirect('tour/host')}})
 
   router.put('/:id/edit', (req, res) => {
     Tournament.findByIdAndUpdate(req.params.id, req.body, (err, updatedUser) => {
