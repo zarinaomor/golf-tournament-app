@@ -5,7 +5,8 @@ Created by: Zarina Omor, Reed MacDonald, & Kaitlin Park
 We created ParTee with the intention of bringing users together through a common interest... golf! Once a user registers with us they are able to host and join groups to network, improve their game, or to just find a buddy to play a round with.
 
 ### Wireframes and Team Brainstorm
-![App Blueprint](wireframes/Image from iOS.jpg)
+![App Blueprint]
+(https://raw.githubusercontent.com/parkaitlin/golf-tournament-app/master/wireframes/Image%20from%20iOS.jpg)
 
 The Home view page serves as the first page the user encounters and the foundation for all of other pages.
 
@@ -30,3 +31,9 @@ For the Partees or Group events we included:
 - JavaScript
 
 We are live via Heroku, please check us out at [ParTee](https://partee-rzk.herokuapp.com/home)!
+
+Future Improvements:
+- Place subtle notifications throughout the application to create a smoother user experience.
+- Use an API for data on: Golf Courses and Categories/Tags
+- Add a feature where coaches can host group lessons and users can sign up
+- Allow Users to search by city, invite other users, and review golf courses.
