@@ -49,6 +49,15 @@
                                     <input type="text" class="form-control" name="eventName" placeholder="" value=""/>
                                 </div>
                                 <div class="form-group">
+                                        <form action="/tour/host" method="get">
+                                        <input list='golfCourses' name="golfCourse">
+                                        <datalist id="golfCourses">
+                                          <% for(let i = 0; i < golfCourses.length; i++){ %>
+                                          <option value="<%=golfCourses[i].name%>">
+                                          <% } %>
+                                        </datalist>
+                                        </form>
+                                        
                                         <select name="golfCourse" class="form-control" placeholder="Select Golf Course *">
                                         <option>Location</option>
                                           <% for(let i =0; i < golfCourses.length; i++){%>
